@@ -38,7 +38,7 @@ export default function Navbar() {
   }, [darkMode]);
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-[#020617]/90 backdrop-blur border-b border-[#1e293b]">
+    <header className="sticky pb-4 top-0 z-50 w-full bg-[#020617]/90 backdrop-blur border-b border-[#1e293b]">
       
       {/* ✅ Container aligned with rootlayout */}
      {!open &&  <div className="max-w-[1480px] mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
