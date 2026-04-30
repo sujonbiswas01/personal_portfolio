@@ -52,58 +52,21 @@ const Abouts = () => {
             transition={{ duration: 0.90, ease: "easeOut" }}
           >
             <motion.p
-              className="text-foreground text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed bg-background/50 rounded transition-all p-4 sm:p-5 lg:p-6 flex flex-col gap-2"
+              className="text-foreground text-sm sm:text-base md:text-lg leading-relaxed bg-background/50 rounded transition-all p-4"
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.55, delay: 0.12 }}
               viewport={{ once: true }}
             >
-              <span>
-                I’m <span className="text-primary font-semibold">Sujon Biswas</span>,
-                a <span className="text-sky-400 font-semibold">Full-Stack Web Developer</span> passionate about crafting modern, scalable, and high-performance web apps.
-              </span>
-              <span className="block">
-                My expertise spans the frontend (
-                <span className="font-medium text-primary">React</span>
-                <span className="hidden xs:inline">,&nbsp;</span>
-                <span className="inline xs:hidden"><br/></span>
-                <span className="text-sky-400">Next.js</span>
-                <span className="hidden xs:inline">,&nbsp;</span>
-                <span className="inline xs:hidden"><br/></span>
-                <span className="font-medium text-primary">Javascript</span>
-                <span className="hidden xs:inline">,&nbsp;</span>
-                <span className="inline xs:hidden"><br/></span>
-                <span className="text-emerald-400">TypeScript</span>
-                <span className="hidden xs:inline">,&nbsp;</span>
-                <span className="inline xs:hidden"><br/></span>
-                <span className="text-cyan-400">Tailwind</span>
-                <span className="hidden xs:inline">, </span>
-                <span className="inline xs:hidden"><br/></span>
-                <span className="text-cyan-400">Bootstrap</span>
-                <span className="hidden xs:inline">, </span>
-                <span className="inline xs:hidden"><br/></span>
-                <span className="text-cyan-400">Firebase</span>
-                ) 
-                <span className="inline xs:hidden"><br/></span>
-                and backend (
-                <span className="text-indigo-400">Node.js</span>
-                <span className="hidden xs:inline">,&nbsp;</span>
-                <span className="inline xs:hidden"><br/></span>
-                <span className="text-cyan-400">Express</span>
-                <span className="hidden xs:inline">,&nbsp;</span>
-                <span className="inline xs:hidden"><br/></span>
-                <span className="text-amber-400">MongoDB</span>
-                <span className="hidden xs:inline">,&nbsp;</span>
-                <span className="inline xs:hidden"><br/></span>
-                <span className="text-violet-400">PostgreSQL</span>
-                <span className="hidden xs:inline">,&nbsp;</span>
-                <span className="inline xs:hidden"><br/></span>
-                <span className="text-violet-400">Prisma</span>
-                ).
-              </span>
-              <span>I create seamless, <span className="font-semibold text-sky-400">responsive designs</span> and architect robust, secure APIs for all devices and screen sizes.</span>
+              I'm Sujon Biswas, a Full-Stack Web Developer passionate about crafting modern, scalable, and high-performance web apps.
+              <br />
+              <br />
+              My expertise spans the frontend (
+              React, Next.js, Javascript, TypeScript, Tailwind, Bootstrap, Firebase
+              ) and backend (
+              Node.js, Express, MongoDB, PostgreSQL, Prisma
+              ). I create seamless, responsive designs and architect robust, secure APIs for all devices and screen sizes.
             </motion.p>
-       
             <motion.p
               className="text-foreground/90 text-sm sm:text-base md:text-lg leading-relaxed bg-background/60 rounded transition-all p-4"
               initial={{ opacity: 0, x: 30 }}
@@ -111,11 +74,9 @@ const Abouts = () => {
               transition={{ duration: 0.55, delay: 0.22 }}
               viewport={{ once: true }}
             >
-              I’m dedicated to writing <span className="text-primary font-semibold">clean, maintainable code</span>
-              —always following best practices.
-              Skilled with <span className="text-amber-400">design tools</span> like <span className="font-semibold">Figma</span> and <span className="font-semibold">Adobe photoshop</span>,
-              <span className="font-semibold">Adobe illastrator</span>,
-              I bridge development &amp; design for visually stunning user experiences.
+              I'm dedicated to writing clean, maintainable code—always following best practices.
+              Skilled with design tools like Figma, Adobe Photoshop, Adobe Illustrator,
+              I bridge development and design for visually stunning user experiences.
               My workflow includes Docker, Git, GitHub, and Vercel for smooth CI/CD.
             </motion.p>
             <motion.ul
@@ -144,6 +105,7 @@ const Abouts = () => {
               </span>
             </motion.p>
           </motion.div>
+     
      
         </motion.div>
 
