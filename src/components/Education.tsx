@@ -47,7 +47,7 @@ const timelineItem = {
 
 export default function EducationPage() {
   return (
-    <section className="w-full px-4 sm:px-6 lg:px-8 flex justify-center  py-10 sm:py-16 bg-gradient-to-br from-[#f8fafc] via-[#e0e7ff] to-[#f0fdfa] dark:from-[#0F172A] dark:via-[#223] dark:to-[rgb(30,41,59)] transition-colors">
+    <section id="education" className="w-full px-4 sm:px-6 lg:px-8 flex justify-center  py-10 sm:py-16 bg-gradient-to-br from-[#f8fafc] via-[#e0e7ff] to-[#f0fdfa] dark:from-[#0F172A] dark:via-[#223] dark:to-[rgb(30,41,59)] transition-colors">
       <div className="w-full max-w-[1440px]">
         {/* HEADER */}
         <motion.div
