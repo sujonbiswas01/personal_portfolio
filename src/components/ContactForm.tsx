@@ -1,0 +1,143 @@
+"use client"
+import { useRouter } from 'next/navigation';
+import { useState, useRef } from 'react';
+import { toast } from 'react-toastify';
+
+export default function ContactForm() {
+  const router = useRouter();
+  const [result, setResult] = useState("");
+  const formRef = useRef<HTMLFormElement>(null);
+
+  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    const toastId = toast.loading("Sending...");
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    formData.append("access_key", "c6a4ac3a-c30b-477a-b0f6-17e6a438aaf1");
+
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData
+    });
+    if (!response.ok) {
+      toast.error("Failed to send. Please try again.", { autoClose: 2000 });
+      toast.dismiss(toastId);
+      return;
+    }
+
+    const data = await response.json();
+    if (data.success) {
+      toast.success("Message sent successfully!", { autoClose: 2000 });
+      setResult("Success!");
+      if (formRef.current) {
+        formRef.current.reset(); // Clear the form fields if success
+      }
+      router.refresh();
+    } else {
+      toast.error(data.message || "Error sending message.");
+      setResult("Error");
+    }
+    toast.dismiss(toastId);
+  };
+
+  return (
+    <form
+      ref={formRef}
+      onSubmit={onSubmit}
+      className="w-full max-w-md mx-auto p-6 rounded-lg bg-white dark:bg-zinc-950 shadow-md space-y-4 animate-fadeIn"
+      style={{ animation: "fadeIn 0.9s cubic-bezier(.42,0,1,1)" }}
+      autoComplete="off"
+    >
+      {/* Email (required) */}
+      <div>
+        <label htmlFor="email" className="block text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+          Email address <span className="text-red-500">*</span>
+        </label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          required
+          className="w-full px-3 py-2 border rounded-md"
+        />
+      </div>
+
+      {/* Phone (required) */}
+      <div>
+        <label htmlFor="phone" className="block text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+          Phone number <span className="text-red-500">*</span>
+        </label>
+        <input
+          type="tel"
+          name="phone"
+          id="phone"
+          required
+          className="w-full px-3 py-2 border rounded-md"
+        />
+      </div>
+
+      {/* WhatsApp (optional) */}
+      <div>
+        <label htmlFor="whatsapp" className="block text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+          WhatsApp number <span className="text-xs font-normal text-muted-foreground">(optional)</span>
+        </label>
+        <input
+          type="tel"
+          name="whatsapp"
+          id="whatsapp"
+          className="w-full px-3 py-2 border rounded-md"
+        />
+      </div>
+
+      {/* Message (required) */}
+      <div>
+        <label htmlFor="message" className="block text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+          Message <span className="text-red-500">*</span>
+        </label>
+        <textarea
+          name="message"
+          id="message"
+          required
+          className="w-full px-3 py-2 border rounded-md resize-none"
+          rows={4}
+        />
+      </div>
+      
+      <button
+        type="submit"
+        className="w-full flex items-center justify-center gap-2 py-2 px-4 rounded-lg bg-gradient-to-r from-primary to-blue-600 text-white font-semibold text-base shadow-lg hover:from-blue-700 hover:to-primary/90 focus:outline-none focus:ring-2 focus:ring-primary/70 transition-all duration-200"
+      >
+        <svg
+          className="w-5 h-5 text-white opacity-80"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth={2}
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M2.5 12.5l7 7 12-12"
+          />
+        </svg>
+        Send Message
+      </button>
+
+      <p className={`text-center text-sm mt-1 ${result === "Success!" ? "text-green-600" : result ? "text-rose-500" : ""}`}>
+        {result}
+      </p>
+
+      <div className="text-xs text-muted-foreground mt-2 text-center">
+        <span className="text-red-500">*</span> indicates required field.
+      </div>
+
+      {/* Animate form fadeIn */}
+      <style>
+        {`@keyframes fadeIn {
+            0%{transform: translateY(25px); opacity:0;}
+            100%{transform: none; opacity:1;}
+        }`}
+      </style>
+    </form>
+  );
+}

@@ -1,4 +1,6 @@
 import Abouts from "@/components/About";
+import ContactForm from "@/components/ContactForm";
+// import ContactForm from "@/components/ContactForm";
 import EducationPage from "@/components/Education";
 import { ImagesSliderDemo } from "@/components/HeroSlider";
 import { ProjectCard } from "@/components/ProjectCard";
@@ -34,6 +36,7 @@ const HomePage = () => {
           </div>
         </div>
       </section>
+      <ContactForm/>
     </div>
   );
 };

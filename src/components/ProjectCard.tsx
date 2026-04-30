@@ -1,7 +1,6 @@
 "use client";
 
 import { useRef, useEffect } from "react";
-import { Button } from "@/components/ui/button";
 import { Project } from "@/data/project";
 import { ExternalLink } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
@@ -19,6 +18,7 @@ import {
   DialogTrigger,
 } from "./ui/dialog";
 import Image from "next/image";
+import { Button } from "./ui/button";
 
 const cardVariants = {
   initial: {
@@ -168,7 +168,7 @@ export function ProjectCard({ project }: { project: Project }) {
         {/* ACTIONS */}
         <div className="mt-auto pt-4 flex flex-col sm:flex-row gap-2 w-full">
           <Dialog>
-            <DialogTrigger>
+            <DialogTrigger asChild>
               <Button variant="outline" className="w-full">
                 View Details
               </Button>
