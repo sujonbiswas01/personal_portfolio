@@ -74,15 +74,31 @@ export type Project = {
       ],
     },
     {
-      slug: "ecommerce",
-      name: "E-commerce Website",
-      image: "https://images.unsplash.com/photo-1515168833906-d2a3b82b302a",
-      description:
-        "E-commerce platform with product listing, cart system, and checkout flow.",
-      stack: ["Next.js", "Node.js", "MongoDB"],
-      liveUrl: "#",
-      githubUrl: "#",
-      challenges: ["Cart logic", "API integration"],
-      improvements: ["Payment gateway", "Better UX"],
-    },
+  slug: "meta-blog",
+  name: "Meta Blog — Advanced MERN Stack Publishing Platform",
+  image: "/images/blog.png",
+  description:
+    "A sophisticated full-stack blogging ecosystem featuring a dynamic content management system, secure authoring tools, and a responsive UI for seamless multi-device reading experiences.",
+  stack: [
+    "React.js", 
+    "JavaScript", 
+    "Node.js", 
+    "Express.js", 
+    "MongoDB", 
+    "Mongoose", 
+    "Tailwind CSS"
+  ],
+  liveUrl: "https://meta-blog-app-ebon.vercel.app", 
+  githubUrl: "https://github.com/sujonbiswaseng/meta-blog-app.git",
+  challenges: [
+    "Developing a robust 'Manage Your Blogs' interface with real-time Edit/Delete functionality",
+    "Designing a scalable Mongoose schema to handle diverse categories like Technology, Lifestyle, and Economy",
+    "Implementing a high-performance 'React Server Components' architecture for optimized SEO and speed"
+  ],
+  improvements: [
+    "Custom dark/light mode toggle for enhanced user accessibility",
+    "Streamlined 'Add New Blog' form with validation for author and image URLs",
+    "Integrated 'Meet Our Team' and interactive 'Contact' sections for improved brand trust"
+  ],
+}
   ];
