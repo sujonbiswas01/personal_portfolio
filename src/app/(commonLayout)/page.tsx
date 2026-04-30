@@ -1,4 +1,5 @@
 import Abouts from '@/components/About'
+import EducationPage from '@/components/Education'
 import { ImagesSliderDemo } from '@/components/HeroSlider'
 import Skills from '@/components/Skill'
 import React from 'react'
@@ -9,6 +10,7 @@ const HomePage = () => {
             <ImagesSliderDemo/>
             <Abouts/>
             <Skills/>
+            <EducationPage/>
         </div>
     )
 }
