@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { ToastContainer } from 'react-toastify';
-import { Geist, Geist_Mono, Inter, JetBrains_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -13,8 +13,8 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Foodhub",
-  description: "foodhub website",
+  title: "Sujon",
+  description: "Sujon Personal website",
 };
 
 export default function RootLayout({
@@ -27,7 +27,7 @@ export default function RootLayout({
     suppressHydrationWarning
       data-scroll-behavior="smooth"
       lang="en"
-      className={`font-${inter} font-${mono} font-sans h-full antialiased `}
+      className={`${inter.variable} ${mono.variable} font-sans h-full antialiased`}
     >
       <body
         suppressHydrationWarning

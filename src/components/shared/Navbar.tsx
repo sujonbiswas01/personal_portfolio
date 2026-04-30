@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 
 const navItems = [
   { name: "Home", href: "" },
@@ -18,14 +17,13 @@ function isActive(href: string, hash: string) {
 }
 
 export default function Navbar() {
-  const pathname = usePathname();
-  const [hash, setHash] = useState("");
+  const [hash, setHash] = useState(() =>
+    typeof window !== "undefined" ? window.location.hash : ""
+  );
   const [open, setOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(true);
 
   useEffect(() => {
-    setHash(window.location.hash);
-
     const handleHashChange = () => setHash(window.location.hash);
     window.addEventListener("hashchange", handleHashChange);
 
@@ -37,22 +35,22 @@ export default function Navbar() {
   }, [darkMode]);
 
   return (
-    <header className="sticky pb-4 top-0 z-50 w-full bg-[#020617]/90 backdrop-blur border-b border-[#1e293b]">
+    <header className="sticky top-0 z-50 w-full border-b border-border/80 bg-background/95 backdrop-blur-md shadow-sm">
       
       {/* ✅ Container aligned with rootlayout */}
-     {!open &&  <div className="max-w-[1480px] mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+     {!open &&  <div className="app-shell h-16 md:h-[4.25rem] flex items-center justify-between">
         
       {/* Logo */}
       <Link href="/" className="flex items-center">
         <img
           src="/images/sujon_logo.png"
           alt="Logo"
-          className="w-10 h-10 sm:w-12 sm:h-12 object-contain"
+          className="w-10 h-10 sm:w-11 sm:h-11 object-contain"
         />
       </Link>
 
       {/* Desktop Menu */}
-      <nav className="hidden md:flex items-center gap-6 lg:gap-8 text-sm font-medium">
+      <nav className="hidden md:flex items-center gap-5 lg:gap-7 text-sm font-medium">
         {navItems.map((item) => {
           const active = isActive(item.href, hash);
           return (
@@ -61,8 +59,8 @@ export default function Navbar() {
               href={item.href}
               className={`transition ${
                 active
-                  ? "text-[#9EFF00] font-semibold"
-                  : "text-gray-300 hover:text-[#9EFF00]"
+                  ? "text-primary font-semibold"
+                  : "text-muted-foreground hover:text-primary"
               }`}
             >
               {item.name}
@@ -77,7 +75,7 @@ export default function Navbar() {
         {/* Dark Mode Toggle */}
         <button
           onClick={() => setDarkMode(!darkMode)}
-          className="text-lg text-gray-300 hover:text-[#9EFF00] transition"
+          className="text-lg text-muted-foreground hover:text-primary transition"
         >
           {darkMode ? "🌙" : "☀️"}
         </button>
@@ -85,7 +83,7 @@ export default function Navbar() {
         {/* Contact Button */}
         <Link
           href="#contact"
-          className="hidden md:inline-flex px-4 py-2 text-sm rounded-md bg-blue-600 text-white hover:bg-blue-700 transition"
+          className="hidden md:inline-flex px-4 py-2 text-sm rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition"
         >
           Contact
         </Link>
@@ -93,7 +91,7 @@ export default function Navbar() {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setOpen(true)}
-          className="md:hidden text-2xl text-gray-200"
+          className="md:hidden text-2xl text-foreground"
         >
           ☰
         </button>
@@ -102,13 +100,13 @@ export default function Navbar() {
 
       {/* ✅ Mobile Menu (your structure, improved color) */}
       {open && (
-        <div className="fixed z-50 flex min-w-full min-h-full md:hidden bg-black transition-all duration-300">
+        <div className="fixed z-50 flex min-w-full min-h-full md:hidden bg-black/60 transition-all duration-300">
           
           {/* Sidebar */}
-          <aside className="relative flex flex-col min-w-full min-h-full max-w-full bg-[#020617] shadow-2xl border-r border-[#1e293b]">
+          <aside className="relative flex flex-col min-w-full min-h-full max-w-full bg-background shadow-2xl border-r border-border">
             
             {/* Header */}
-            <div className="flex items-center justify-between px-6 py-5 border-b border-[#1e293b]">
+            <div className="flex items-center justify-between px-6 py-5 border-b border-border">
               <Link
                 href="/"
                 onClick={() => setOpen(false)}
@@ -123,7 +121,7 @@ export default function Navbar() {
 
               <button
                 onClick={() => setOpen(false)}
-                className="text-3xl text-gray-400 hover:text-[#9EFF00]"
+                className="text-3xl text-muted-foreground hover:text-primary"
               >
                 &times;
               </button>
@@ -140,8 +138,8 @@ export default function Navbar() {
                     onClick={() => setOpen(false)}
                     className={`w-full px-4 py-2 rounded-lg text-base font-medium transition ${
                       active
-                        ? "bg-[#9EFF00]/10 text-[#9EFF00] border border-[#9EFF00]/30"
-                        : "text-gray-300 hover:bg-[#9EFF00]/5 hover:text-[#9EFF00]"
+                        ? "bg-primary/10 text-primary border border-primary/30"
+                        : "text-muted-foreground hover:bg-primary/5 hover:text-primary"
                     }`}
                   >
                     {item.name}
@@ -151,9 +149,9 @@ export default function Navbar() {
 
               {/* Contact */}
               <Link
-                href="/contact"
+                href="#contact"
                 onClick={() => setOpen(false)}
-                className="mt-8 w-full px-4 py-3 rounded-lg bg-gradient-to-r from-[#2563eb] to-[#9EFF00] text-white text-center font-bold shadow-lg hover:from-[#1d4ed8] hover:to-[#84cc16] transition"
+                className="mt-8 w-full px-4 py-3 rounded-lg bg-primary text-primary-foreground text-center font-semibold shadow-lg hover:bg-primary/90 transition"
               >
                 Contact
               </Link>

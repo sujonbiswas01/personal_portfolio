@@ -5,8 +5,19 @@ import { GlareCard } from "./glareCard";
 import { motion } from "framer-motion";
 import gsap from "gsap";
 
+type SkillItem = {
+  name: string;
+  icon?: string;
+};
+
+type SkillCategory = {
+  title: string;
+  color: string;
+  skill: SkillItem[];
+};
+
 const Skills = () => {
-  const [skilldata, setskilldata] = useState<any[]>([]);
+  const [skilldata, setSkilldata] = useState<SkillCategory[]>([]);
   const [loading, setLoading] = useState(true);
   const container = useRef<HTMLDivElement>(null);
 
@@ -14,10 +25,10 @@ const Skills = () => {
     axios
       .get("/api/skills.json")
       .then((response) => {
-        setskilldata(response.data);
+        setSkilldata(response.data);
       })
       .catch(() => {
-        setskilldata([]);
+        setSkilldata([]);
       })
       .finally(() => {
         setLoading(false);
@@ -38,30 +49,30 @@ const Skills = () => {
     <section
       id="skills"
       ref={container}
-      className="w-full flex flex-col items-center py-12 md:py-16 px-4"
+      className="w-full section-space"
     >
+      <div className="app-shell">
       {/* Title */}
       <motion.div
-        className="text-center mb-10"
+        className="text-center mb-10 md:mb-12"
         initial={{ opacity: 0, y: -30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.7, ease: "easeOut" }}
       >
-        <h2 className="font-black text-2xl sm:text-3xl md:text-4xl lg:text-5xl bg-gradient-to-r from-blue-600 to-purple-500 bg-clip-text text-transparent">
+        <h2 className="font-black text-2xl sm:text-3xl md:text-4xl lg:text-5xl bg-gradient-to-r from-primary to-violet-500 bg-clip-text text-transparent">
           My Recent Skills
         </h2>
       </motion.div>
 
       {/* Grid */}
       <div
-        className="w-full max-w-7xl mx-auto grid 
+        className="w-full grid 
         grid-cols-1 
         sm:grid-cols-2 
-        md:grid-cols-2 
         lg:grid-cols-3 
         xl:grid-cols-4 
-        gap-6 md:gap-8"
+        gap-4 sm:gap-5 md:gap-6"
       >
         {loading || skilldata.length === 0 ? (
           // Show a single placeholder card if loading or no data, animate with bounce
@@ -78,8 +89,8 @@ const Skills = () => {
                 ease: "easeInOut",
               }}
             >
-              <div className="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center mb-4">
-                <svg className="w-7 h-7 text-gray-400 animate-spin" fill="none" viewBox="0 0 24 24">
+              <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center mb-4">
+                <svg className="w-7 h-7 text-muted-foreground animate-spin" fill="none" viewBox="0 0 24 24">
                   <circle
                     className="opacity-25"
                     cx="12"
@@ -95,16 +106,16 @@ const Skills = () => {
                   ></path>
                 </svg>
               </div>
-              <h1 className="text-lg font-bold text-gray-300 mb-2 animate-bounce">Skills Pending...</h1>
-              <p className="text-sm text-gray-400">Fetching latest skills data</p>
+              <h1 className="text-lg font-bold text-foreground mb-2 animate-bounce">Skills Pending...</h1>
+              <p className="text-sm text-muted-foreground">Fetching latest skills data</p>
             </motion.div>
           </GlareCard>
         ) : (
-          skilldata.map((item: any, idx: number) => (
+          skilldata.map((item, idx) => (
             <GlareCard key={idx}>
               {/* Header */}
               <h1
-                className="text-center font-bold text-white py-3 rounded-lg text-base sm:text-lg md:text-xl"
+                className="text-center font-bold text-white py-3 px-3 rounded-lg text-sm sm:text-base md:text-lg leading-tight"
                 style={{ backgroundColor: item.color }}
               >
                 {item.title}
@@ -112,10 +123,10 @@ const Skills = () => {
 
               {/* Skills */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4">
-                {item.skill.map((skill: any, i: number) => (
+                {item.skill.map((skill, i) => (
                   <motion.div
                     key={i}
-                    className="flex items-center gap-3 bg-gray-800 hover:bg-gray-700 px-3 py-2 rounded-md transition"
+                    className="flex items-center gap-2.5 bg-muted hover:bg-accent px-3 py-2 rounded-md transition min-w-0"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -128,12 +139,12 @@ const Skills = () => {
                         alt={skill.name}
                       />
                     ) : (
-                      <div className="w-7 h-7 flex items-center justify-center bg-gray-700 text-white rounded">
+                      <div className="w-7 h-7 flex items-center justify-center bg-secondary text-secondary-foreground rounded">
                         {skill.name?.[0]}
                       </div>
                     )}
 
-                    <p className="text-sm sm:text-base text-white font-medium">
+                    <p className="text-xs sm:text-sm md:text-base text-foreground font-medium leading-snug break-words">
                       {skill.name}
                     </p>
                   </motion.div>
@@ -142,6 +153,7 @@ const Skills = () => {
             </GlareCard>
           ))
         )}
+      </div>
       </div>
     </section>
   );

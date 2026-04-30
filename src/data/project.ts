@@ -13,36 +13,65 @@ export type Project = {
   
   export const projects: Project[] = [
     {
-      slug: "meta-blog",
-      name: "Meta Blog Platform",
-      image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
+      slug: "food-hub",
+      name: "FoodHub — Smart Food Ordering Platform",
+      image: "/images/foodhub.png",
       description:
-        "A full-featured blog platform with dynamic routing, post management, and modern UI. Built with scalability and performance in mind.",
-      stack: ["Next.js", "React", "Tailwind", "PostgreSQL"],
-      liveUrl: "#",
-      githubUrl: "#",
+        "A next-generation full-stack food ordering solution featuring a high-fidelity user marketplace and a comprehensive administrative control suite for real-time order and inventory management.",
+      stack: [
+        "Next.js", 
+        "Tailwind CSS", 
+        "TypeScript", 
+        "Node.js", 
+        "Express.js", 
+        "PostgreSQL", 
+        "Prisma", 
+        "BetterAuth"
+      ],
+      liveUrl: "https://frontend-next-level-assingment-4.vercel.app",
+      githubUrl: "https://github.com/sujonbiswaseng/frontend-next-level-assignment-4",
       challenges: [
-        "Dynamic routing optimization",
-        "Component reusability",
-        "Performance tuning",
+        "Implementing complex relational data schemas with Prisma and PostgreSQL",
+        "Building a responsive and interactive Admin Dashboard for multi-level management",
+        "Managing real-time status updates across the order lifecycle"
       ],
       improvements: [
-        "Add authentication",
-        "Comment system",
-        "SEO optimization",
+        "Integration of BetterAuth for secure multi-role authentication",
+        "Interactive data visualization for earnings and performance metrics",
+        "Optimized SEO for food items and category pages"
       ],
     },
     {
-      slug: "dashboard",
-      name: "Admin Dashboard",
-      image: "https://images.unsplash.com/photo-1551281044-8d8d7a6f4f3c",
+      slug: "planora",
+      name: "Planora – Event Management Platform",
+      image: "/images/planora.png",
       description:
-        "A responsive dashboard with charts, analytics, and modular UI components.",
-      stack: ["Next.js", "Tailwind", "Chart.js"],
-      liveUrl: "#",
-      githubUrl: "#",
-      challenges: ["State management", "Responsive layout"],
-      improvements: ["Real-time data", "User roles"],
+        "A high-performance, full-stack event management platform designed to bridge the gap between event organizers and attendees. Planora provides a seamless workflow for event creation, secure payments, and role-based participant management.",
+      stack: [
+        "Next.js",
+        "Tailwind CSS",
+        "shadcn/ui",
+        "Node.js",
+        "Express.js",
+        "Prisma ORM",
+        "PostgreSQL",
+        "JWT",
+        "Better-Auth",
+        "Stripe"
+      ],
+      liveUrl: "https://frontend-nextlevel-assignment-5.vercel.app",
+      githubUrl: "https://github.com/sujonbiswasdev/frontend-nextlevel-assignment-5",
+      challenges: [
+        "Implementing complex event access control (Public Free/Paid, Private Free/Paid) based on user roles and payment status",
+        "Integrating Stripe securely for both public paid registrations and paying hosts for private events",
+        "Managing the invitation workflow including host invitations, guest acceptance/declination, and conditional payments"
+      ],
+      improvements: [
+        "Interactive dashboard analytics with charts for registration metrics and payment summaries",
+        "Real-time notifications for event invitations, request status updates, and new reviews",
+        "Advanced SEO optimization for event pages and organizer profiles",
+        "Implementation of a waiting list system for fully booked events"
+      ],
     },
     {
       slug: "ecommerce",

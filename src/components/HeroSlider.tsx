@@ -13,9 +13,9 @@ import { ContainerTextFlip } from "./container-textFlip";
 
 export function ImagesSliderDemo() {
   const words = [
-    " Frontend Developer",
+    "Frontend Developer",
     "Web Developer",
-    "backend developer",
+    "Backend Developer",
     "Full Stack Developer",
   ];
   const images = [
@@ -24,7 +24,11 @@ export function ImagesSliderDemo() {
     "https://cdn.pixabay.com/photo/2016/11/19/15/32/code-1839877_1280.jpg",
   ];
   return (
-    <ImagesSlider className="h-[40rem] -mt-4" images={images}>
+    <ImagesSlider
+      className="min-h-[calc(100vh-4rem)] md:min-h-[40rem]"
+      images={images}
+      overlayClassName="bg-gradient-to-r from-black/80 via-black/65 to-black/80"
+    >
       <motion.div
         initial={{
           opacity: 0,
@@ -37,36 +41,39 @@ export function ImagesSliderDemo() {
         transition={{
           duration: 0.6,
         }}
-        className="z-50"
+        className="z-50 app-shell w-full py-10 md:py-14"
       >
-        <motion.div className="relative ">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="text-left md:max-w-[60%] w-full relative px-6 md:px-0 space-y-2">
-              <h1 className="font-primary font-bold text-[24px] md:text-[35px] lg:text-[40px] leading-tight">
-                {" "}
-                <span className="text-[18px] md:text-[25px]"> Hello,</span>{" "}
-                <br />{" "}
-                <span className="text-[24px] md:text-[35px] text-[#9EFF00]">
+        <motion.div className="relative">
+          <div className="flex flex-col gap-10 md:gap-6 md:flex-row justify-between items-center">
+            <div className="text-left md:max-w-[58%] w-full relative z-20 space-y-3">
+              <h1 className="font-primary font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight text-white drop-shadow-[0_4px_18px_rgba(0,0,0,0.65)]">
+                <span className="text-base sm:text-lg md:text-2xl text-slate-100">Hello,</span>
+                <br />
+                <span className="text-2xl sm:text-3xl md:text-4xl text-primary">
                   I’m Sujon a
-                </span>{" "}
-                <br /> <ContainerTextFlip className="mt-2" words={words} />
+                </span>
+                <br />
+                <ContainerTextFlip
+                  className="mt-2 max-w-full !text-2xl sm:!text-3xl md:!text-5xl lg:!text-6xl"
+                  words={words}
+                />
               </h1>
-              <div className="flex gap-6 mt-6">
+              <div className="flex gap-4 sm:gap-5 mt-4">
                 <a
                   href="https://www.instagram.com/sujonbiswaseng"
-                  className="text-3xl text-white border-none outline-none cursor-pointer "
+                  className="text-2xl sm:text-3xl text-white border-none outline-none cursor-pointer"
                 >
                   <FaInstagramSquare />
                 </a>
                 <a
                   href="https://www.linkedin.com/in/sujonbiswaseng"
-                  className="text-3xl text-white border-none outline-none cursor-pointer"
+                  className="text-2xl sm:text-3xl text-white border-none outline-none cursor-pointer"
                 >
                   <FaLinkedin />
                 </a>
                 <a
                   href="https://www.facebook.com/sujonbiswas2025/"
-                  className="text-3xl text-white border-none outline-none cursor-pointer"
+                  className="text-2xl sm:text-3xl text-white border-none outline-none cursor-pointer"
                 >
                   <FaFacebook />
                 </a>
@@ -85,12 +92,12 @@ export function ImagesSliderDemo() {
                 </a>
               </div>
 
-              <div className="mt-4 text-base md:text-lg lg:text-xl text-gray-300 font-medium leading-relaxed max-w-xl">
-                Crafting <span className="text-[#9EFF00] font-semibold">professional</span>, innovative, and <span className="text-[#9EFF00] font-semibold">responsive</span> web experiences — blending clean code, performance, and user-centered design for businesses that want to make an impact.
+              <div className="mt-4 text-base md:text-lg lg:text-xl text-slate-100 font-medium leading-relaxed max-w-xl drop-shadow-[0_3px_12px_rgba(0,0,0,0.45)]">
+                Crafting <span className="text-primary font-semibold">professional</span>, innovative, and <span className="text-primary font-semibold">responsive</span> web experiences - blending clean code, performance, and user-centered design for businesses that want to make an impact.
               </div>
          
 
-              <div className="pt-4 pb-4 flex sm:flex-row flex-col items-center gap-5">
+              <div className="pt-3 pb-4 flex sm:flex-row flex-col items-stretch sm:items-center gap-3 sm:gap-4">
                 <motion.a
                   whileHover={{
                     scale: 1.08,
@@ -98,7 +105,7 @@ export function ImagesSliderDemo() {
                   }}
                   whileTap={{ scale: 0.97 }}
                   transition={{ type: "spring", stiffness: 300 }}
-                  className="bg-[#FD6F00] text-white font-bold font-primary text-[18px] lg:text-[20px] py-1 px-6 rounded-xl shadow-md"
+                  className="bg-primary text-primary-foreground text-center font-semibold font-primary text-base lg:text-lg py-2 px-6 rounded-xl shadow-md"
                   href="https://shorturl.at/Vv1bI"
                 >
                   Hire Me
@@ -117,7 +124,7 @@ export function ImagesSliderDemo() {
                     type: "spring",
                     stiffness: 300,
                   }}
-                  className="border border-[#FD6F00] text-white font-bold font-primary text-[18px] lg:text-[20px] py-1 px-6 rounded-xl"
+                  className="border border-primary text-white text-center font-semibold font-primary text-base lg:text-lg py-2 px-6 rounded-xl"
                   download
                   href="/images/resume.pdf"
                 >
@@ -131,7 +138,7 @@ export function ImagesSliderDemo() {
                 {/* Profile Image */}
                 <img
                   src="https://res.cloudinary.com/dcbgdaiod/image/upload/v1777515695/copy_of_ownerprofile_mf6mfl_08a0a6.png"
-                  className="z-0 px-6 rounded-3xl md:px-0"
+                  className="z-0 px-4 sm:px-6 md:px-0 rounded-3xl max-w-full h-auto"
                   alt="Profile"
                 />
                 <div className="absolute left-0 bottom-0 h-1/5 right-0 z-10 bg-gradient-to-t from-black to-transparent rounded-3xl md:block"></div>

@@ -3,6 +3,7 @@
 import { GraduationCap, Briefcase } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "framer-motion";
+import type { Variants } from "framer-motion";
 
 const education = [
   {
@@ -21,17 +22,7 @@ const education = [
   },
 ];
 
-const experience = [
-    {
-      title: "Frontend Developer — Meta Blog Website",
-      org: "Independent Project",
-      period: "2025",
-      detail:
-        "Designed and developed a modern blog platform inspired by Meta-style UI using React, and Tailwind CSS. Implemented responsive layouts, dynamic routing, and reusable component architecture. Focused on performance optimization, clean UI/UX, and seamless user experience across all devices.",
-    },
-  ];
-
-const timelineContainer = {
+const timelineContainer: Variants = {
   hidden: {},
   show: {
     transition: {
@@ -40,15 +31,15 @@ const timelineContainer = {
   },
 };
 
-const timelineItem = {
+const timelineItem: Variants = {
   hidden: { opacity: 0, y: 50 },
   show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 80, damping: 14 } },
 };
 
 export default function EducationPage() {
   return (
-    <section id="education" className="w-full px-4 sm:px-6 lg:px-8 flex justify-center  py-10 sm:py-16 bg-gradient-to-br from-[#f8fafc] via-[#e0e7ff] to-[#f0fdfa] dark:from-[#0F172A] dark:via-[#223] dark:to-[rgb(30,41,59)] transition-colors">
-      <div className="w-full max-w-[1440px]">
+    <section id="education" className="w-full section-space bg-gradient-to-br from-background via-accent/20 to-background transition-colors">
+      <div className="app-shell">
         {/* HEADER */}
         <motion.div
           className="text-center mb-14"
@@ -63,7 +54,7 @@ export default function EducationPage() {
             </span>
           </h1>
           <motion.p
-            className="mt-5 text-gray-600 dark:text-gray-300 max-w-full mx-auto text-base sm:text-lg"
+            className="mt-5 text-muted-foreground max-w-full mx-auto text-sm sm:text-base md:text-lg"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.17, type: "spring" }}
@@ -79,15 +70,6 @@ export default function EducationPage() {
           data={education}
           colorFrom="from-blue-500"
           colorTo="to-purple-500"
-        />
-
-        {/* EXPERIENCE TIMELINE */}
-        <Timeline
-          title="Experience"
-          icon={<Briefcase size={22} />}
-          data={experience}
-          colorFrom="from-teal-500"
-          colorTo="to-amber-500"
         />
       </div>
     </section>
@@ -114,7 +96,7 @@ function Timeline({
 }) {
   return (
     <motion.div
-      className="mt-12 px-4 sm:px-6 lg:px-8"
+      className="mt-12"
       variants={timelineContainer}
       initial="hidden"
       whileInView="show"
@@ -136,7 +118,7 @@ function Timeline({
       <div className="relative border-l-4 border-gradient-l min-h-[120px] space-y-12">
         {data.map((item, i) => (
           <motion.div
-            variants={timelineItem as any}
+            variants={timelineItem}
             key={i}
             className="relative group pl-9 sm:pl-12"
           >

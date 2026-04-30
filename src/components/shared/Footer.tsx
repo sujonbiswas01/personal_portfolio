@@ -13,9 +13,9 @@ const navItems = [
 
 const Footer = () => {
   return (
-    <footer className="bg-[#080b1a] text-gray-200">
-      <div className="max-w-7xl mx-auto flex flex-col items-center py-4 px-2">
-        <div className="flex items-center justify-between w-full">
+    <footer className="border-t border-border bg-background text-foreground">
+      <div className="app-shell py-6">
+        <div className="flex flex-col gap-4 sm:gap-5 md:flex-row md:items-center md:justify-between w-full">
           {/* Logo */}
           <div className="flex items-center">
             <Link href="/">
@@ -24,7 +24,7 @@ const Footer = () => {
                 alt="Logo"
                 width={28}
                 height={28}
-                className="object-contain rounded-full border border-gray-700 mr-3"
+                className="object-contain rounded-full border border-border mr-3"
                 priority
               />
             </Link>
@@ -32,10 +32,10 @@ const Footer = () => {
 
           {/* Nav Items */}
           <nav className="flex-1 flex justify-center">
-            <ul className="flex space-x-6 text-xs md:text-sm">
+            <ul className="flex flex-wrap justify-center gap-4 sm:gap-6 text-xs md:text-sm">
               {navItems.map((item) => (
                 <li key={item.href}>
-                  <Link href={item.href} className="hover:text-white transition-colors">
+                  <Link href={item.href} className="text-muted-foreground hover:text-primary transition-colors">
                     {item.label}
                   </Link>
                 </li>
@@ -43,35 +43,42 @@ const Footer = () => {
             </ul>
           </nav>
 
-          <div className="flex flex-col items-end gap-1 mt-6">
-            <div className="flex gap-6 items-center">
+          <div className="flex flex-col items-center md:items-end gap-1">
+            <div className="flex gap-4 sm:gap-5 items-center">
              
               <a
                 href="https://www.instagram.com/sujonbiswaseng"
-                className="text-xl text-white border-none outline-none cursor-pointer transition-transform hover:scale-110"
+                className="text-xl text-muted-foreground hover:text-primary border-none outline-none cursor-pointer transition-transform hover:scale-110"
               >
                 <FaInstagramSquare />
               </a>
               <a
                 href="https://www.linkedin.com/in/sujonbiswaseng"
-                className="text-xl text-white border-none outline-none cursor-pointer transition-transform hover:scale-110"
+                className="text-xl text-muted-foreground hover:text-primary border-none outline-none cursor-pointer transition-transform hover:scale-110"
               >
                 <FaLinkedin />
               </a>
               <a
                 href="https://www.facebook.com/sujonbiswas2025/"
-                className="text-xl text-white border-none outline-none cursor-pointer transition-transform hover:scale-110"
+                className="text-xl text-muted-foreground hover:text-primary border-none outline-none cursor-pointer transition-transform hover:scale-110"
               >
                 <FaFacebook />
               </a>
               <a
-                className="text-xl text-white border-none outline-none cursor-pointer transition-transform hover:scale-110"
+                className={`
+                  text-xl 
+                  border-none outline-none cursor-pointer
+                  transition-transform hover:scale-110
+                  text-muted-foreground hover:text-primary
+                  dark:text-white dark:hover:text-primary
+                `}
                 href="https://www.youtube.com/@nextgenprogrammer01"
               >
                 <FaYoutube />
               </a>
+         
               <a
-                className="text-xl text-white border-none outline-none cursor-pointer transition-transform hover:scale-110"
+                className="text-xl text-muted-foreground hover:text-primary border-none outline-none cursor-pointer transition-transform hover:scale-110"
                 href="https://github.com/sujonbiswaseng"
               >
                 <FaGithub />

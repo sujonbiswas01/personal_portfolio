@@ -4,8 +4,8 @@ import { useRef, useEffect } from "react";
 import { Project } from "@/data/project";
 import { ExternalLink } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
-import Link from "next/link";
 import { motion } from "framer-motion";
+import type { Variants } from "framer-motion";
 import gsap from "gsap";
 import {
   Dialog,
@@ -17,10 +17,9 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "./ui/dialog";
-import Image from "next/image";
 import { Button } from "./ui/button";
 
-const cardVariants = {
+const cardVariants: Variants = {
   initial: {
     opacity: 0,
     y: 40,
@@ -39,7 +38,7 @@ const cardVariants = {
   },
 };
 
-const imageVariants = {
+const imageVariants: Variants = {
   initial: { scale: 1, opacity: 0.7 },
   hover: {
     scale: 1.07,
@@ -99,13 +98,8 @@ export function ProjectCard({ project }: { project: Project }) {
   return (
     <motion.div
       ref={cardRef}
-      className="
-        group flex flex-col overflow-hidden rounded-2xl border bg-background 
-        transition-all duration-300 shadow-sm 
-        sm:min-w-0 min-w-[260px] max-w-full
-        sm:mx-0 mx-auto
-        "
-      variants={cardVariants as any}
+      className="group flex flex-col overflow-hidden rounded-2xl border bg-background transition-all duration-300 shadow-sm min-w-0 max-w-full"
+      variants={cardVariants}
       initial="initial"
       whileInView="animate"
       viewport={{ once: true, amount: 0.25 }}
@@ -113,7 +107,7 @@ export function ProjectCard({ project }: { project: Project }) {
       {/* IMAGE */}
       <motion.div
         className="relative aspect-[16/10] overflow-hidden"
-        variants={imageVariants as any}
+        variants={imageVariants}
         initial="initial"
         whileHover="hover"
         whileTap={{ scale: 0.97 }}
@@ -123,7 +117,7 @@ export function ProjectCard({ project }: { project: Project }) {
           alt={project.name}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           loading="lazy"
-          style={{ minHeight: 150, maxHeight: 250 }}
+          style={{ minHeight: 150, maxHeight: 240 }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-transparent pointer-events-none" />
       </motion.div>
@@ -136,7 +130,7 @@ export function ProjectCard({ project }: { project: Project }) {
           whileInView={{ x: 0, opacity: 1 }}
           transition={{ type: "spring", stiffness: 80, delay: 0.24 }}
         >
-          {project.name.slice(0,14)} .....
+          {project.name}
         </motion.h3>
 
         <motion.p
@@ -145,7 +139,7 @@ export function ProjectCard({ project }: { project: Project }) {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.29, duration: 0.45 }}
         >
-          {project.description.slice(0,14)} ....
+          {project.description}
         </motion.p>
 
         {/* STACK */}
@@ -166,36 +160,38 @@ export function ProjectCard({ project }: { project: Project }) {
         </motion.div>
 
         {/* ACTIONS */}
-        <div className="mt-auto pt-4 flex flex-col sm:flex-row gap-2 w-full">
+        <div className="mt-auto pt-4 flex flex-wrap gap-2 w-full">
           <Dialog>
             <DialogTrigger asChild>
               <Button variant="outline" className="w-full">
                 View Details
               </Button>
             </DialogTrigger>
-            <DialogContent className="DialogContent" style={{ padding: 0 }}>
-              <div className="flex flex-col max-h-[80vh] w-full overflow-y-auto">
-                {/* Fixed image header */}
-                <div className="flex-shrink-0 w-full flex justify-center items-center bg-muted">
+            <DialogContent
+              className="DialogContent w-[96vw] max-w-6xl h-[92vh] p-0 overflow-hidden"
+              style={{ padding: 0 }}
+            >
+              <div className="flex h-full flex-col w-full overflow-y-auto">
+                {/* Preview image */}
+                <div className="shrink-0 w-full flex justify-center items-center bg-black">
                   {project.image && project.name && (
                     <img
                       src={project.image}
                       alt={project.name}
                       width={640}
                       height={360}
-                      className="rounded-t-lg object-cover w-full max-w-[1000px]"
+                      className="rounded-t-lg object-contain w-full"
                       style={{
-                        background: "#f1f5f9",
-                        objectFit: "cover",
-                        minHeight: 150,
-                        maxHeight: 260,
-                        height: "clamp(150px,28vw,260px)"
+                        background: "#020617",
+                        minHeight: 220,
+                        maxHeight: 520,
+                        height: "clamp(220px,50vh,520px)"
                       }}
                     />
                   )}
                 </div>
                 {/* Scrollable details */}
-                <div className="flex-1 px-6 py-4 w-full no-scrollbar bg-background">
+                <div className="flex-1 px-4 sm:px-6 py-4 w-full no-scrollbar bg-background">
                   <DialogHeader>
                     <DialogTitle>{project.name}</DialogTitle>
                     <DialogDescription>
@@ -266,7 +262,7 @@ export function ProjectCard({ project }: { project: Project }) {
                     </div>
                   </div>
                   {/* Action buttons at the bottom of the scrollable content */}
-                  <div className="flex flex-row gap-3 mt-5 mb-2">
+                  <div className="flex flex-col sm:flex-row gap-3 mt-5 mb-2">
                     <a
                       href={project.liveUrl}
                       target="_blank"
@@ -285,8 +281,8 @@ export function ProjectCard({ project }: { project: Project }) {
                     </a>
                   </div>
                 </div>
-                {/* Button stays pinned at bottom with bg blur */}
-                <div className="sticky bottom-0 bg-background/80 backdrop-blur p-4 border-t z-10">
+                {/* Close action */}
+                <div className="bg-background/95 backdrop-blur p-3 sm:p-4 border-t">
                   <DialogFooter>
                     <DialogClose asChild>
                       <Button variant="outline" className="w-full">
@@ -305,7 +301,7 @@ export function ProjectCard({ project }: { project: Project }) {
             asChild
             size="icon"
             variant="outline"
-            className="aspect-square"
+            className="aspect-square shrink-0"
           >
             <a href={project.liveUrl} target="_blank" aria-label="View Live">
               <ExternalLink className="w-4 h-4" />
@@ -316,7 +312,7 @@ export function ProjectCard({ project }: { project: Project }) {
             asChild
             size="icon"
             variant="outline"
-            className="aspect-square"
+            className="aspect-square shrink-0"
           >
             <a
               href={project.githubUrl}

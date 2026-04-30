@@ -40,23 +40,24 @@ export default function ContactForm() {
   };
 
   return (
+    <section id="contact" className="section-space">
+      <div className="app-shell">
     <form
-    id='contact'
       ref={formRef}
       onSubmit={onSubmit}
-      className="w-full max-w-md mx-auto p-6 rounded-lg bg-white dark:bg-zinc-950 shadow-md space-y-4 animate-fadeIn"
+      className="w-full max-w-2xl mx-auto p-5 sm:p-6 md:p-8 rounded-xl bg-card shadow-md border border-border space-y-4 animate-fadeIn"
       style={{ animation: "fadeIn 0.9s cubic-bezier(.42,0,1,1)" }}
       autoComplete="off"
     >
       {/* Title and Description */}
       <div className="text-center mb-5">
-        <h2 className="text-2xl sm:text-3xl font-bold text-blue-700 dark:text-[#9EFF00] mb-2 tracking-tight">
+        <h2 className="text-2xl sm:text-3xl font-bold text-primary mb-2 tracking-tight">
           Contact Me
         </h2>
-        <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 max-w-lg mx-auto">
+        <p className="text-sm sm:text-base text-muted-foreground max-w-lg mx-auto">
           Please fill out the form below and I will respond promptly.
         </p>
-        <div className="w-12 h-1 mt-4 mx-auto rounded-full bg-gradient-to-r from-blue-400 via-purple-400 to-pink-500 dark:from-[#9EFF00] dark:via-blue-400 dark:to-fuchsia-600" />
+        <div className="w-12 h-1 mt-4 mx-auto rounded-full bg-gradient-to-r from-primary via-violet-500 to-sky-400" />
       </div>
  
  
@@ -104,12 +105,11 @@ export default function ContactForm() {
       {/* Message (required) */}
       <div>
         <label htmlFor="message" className="block text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-          Message <span className="text-red-500">*</span>
+          Message 
         </label>
         <textarea
           name="message"
           id="message"
-          required
           className="w-full px-3 py-2 border rounded-md resize-none"
           rows={4}
         />
@@ -117,7 +117,7 @@ export default function ContactForm() {
       
       <button
         type="submit"
-        className="w-full flex items-center justify-center gap-2 py-2 px-4 rounded-lg bg-gradient-to-r from-primary to-blue-600 text-white font-semibold text-base shadow-lg hover:from-blue-700 hover:to-primary/90 focus:outline-none focus:ring-2 focus:ring-primary/70 transition-all duration-200"
+        className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg bg-primary text-primary-foreground font-semibold text-base shadow-lg hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary/70 transition-all duration-200"
       >
         <svg
           className="w-5 h-5 text-white opacity-80"
@@ -152,5 +152,7 @@ export default function ContactForm() {
         }`}
       </style>
     </form>
+    </div>
+    </section>
   );
 }

@@ -200,7 +200,32 @@
         "icon": "",
         "percentage": "85",
         "name": "SEO Optimization"
+      },
+      {
+        "id": 28,
+        "icon": "",
+        "percentage": "80",
+        "name": "BetterAuth"
+      },
+      {
+        "id": 29,
+        "icon": "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/framer.svg",
+        "percentage": "85",
+        "name": "Framer Motion"
+      },
+      {
+        "id": 30,
+        "icon": "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/greensock.svg",
+        "percentage": "75",
+        "name": "GSAP"
+      },
+      {
+        "id": 31,
+        "icon": "",
+        "percentage": "80",
+        "name": "Lenis"
       }
+ 
     ]
   }
 ]
