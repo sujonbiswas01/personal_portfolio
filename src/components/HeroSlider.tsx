@@ -127,14 +127,88 @@ export function ImagesSliderDemo() {
             </div>
 
             <div className="text-right md:max-w-[40%] w-full mr-0">
-              <div className="z-10 relative hover:-rotate-12 transition-all duration-150 cursor-pointer">
+              <div className="relative z-10 flex flex-col items-center group hover:-rotate-12 transition-all duration-150 cursor-pointer">
+                {/* Profile Image */}
                 <img
-                  src="https://res.cloudinary.com/drmeagmkl/image/upload/v1766941482/chatgpt_m8tmep.png"
+                  src="https://res.cloudinary.com/dcbgdaiod/image/upload/v1777515695/copy_of_ownerprofile_mf6mfl_08a0a6.png"
                   className="z-0 px-6 rounded-3xl md:px-0"
-                  alt=""
+                  alt="Profile"
                 />
-                <div className="absolute left-0 bottom-0 h-1/5 cursor-pointer right-0 z-10  bg-gradient-to-t from-black to-transparent rounded-3xl md:block"></div>
+                <div className="absolute left-0 bottom-0 h-1/5 right-0 z-10 bg-gradient-to-t from-black to-transparent rounded-3xl md:block"></div>
+                {/* Animated Coding Logo */}
+                <div className="absolute -top-8 right-6 md:right-0 md:-top-8 z-20 flex items-center justify-center animate-bounce">
+                  {/* Simple animated SVG for coding logo */}
+                  <svg
+                    width="56"
+                    height="56"
+                    viewBox="0 0 56 56"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="drop-shadow-2xl"
+                  >
+                    <circle cx="28" cy="28" r="28" fill="#1E293B" />
+                    <rect x="18" y="18" width="20" height="20" rx="4" fill="#FD6F00" />
+                    <path
+                      d="M29.68 32L33 28L29.68 24"
+                      stroke="#fff"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <animate
+                        attributeName="d"
+                        values="
+                          M29.68 32L33 28L29.68 24;
+                          M27.68 30L31 28L27.68 26;
+                          M29.68 32L33 28L29.68 24
+                        "
+                        dur="2s"
+                        repeatCount="indefinite"
+                      />
+                    </path>
+                    <path
+                      d="M26.32 32L23 28L26.32 24"
+                      stroke="#fff"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <animate
+                        attributeName="d"
+                        values="
+                          M26.32 32L23 28L26.32 24;
+                          M24.32 30L21 28L24.32 26;
+                          M26.32 32L23 28L26.32 24
+                        "
+                        dur="2s"
+                        repeatCount="indefinite"
+                      />
+                    </path>
+                    <rect
+                      x="27"
+                      y="22"
+                      width="2"
+                      height="12"
+                      rx="1"
+                      fill="#fff"
+                    >
+                      <animate
+                        attributeName="height"
+                        values="12;16;12"
+                        dur="2s"
+                        repeatCount="indefinite"
+                      />
+                      <animate
+                        attributeName="y"
+                        values="22;20;22"
+                        dur="2s"
+                        repeatCount="indefinite"
+                      />
+                    </rect>
+                  </svg>
+                </div>
               </div>
+    
             </div>
           </div>
         </motion.div>
