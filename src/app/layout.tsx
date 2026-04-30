@@ -23,7 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      suppressHydrationWarning
+    suppressHydrationWarning
       data-scroll-behavior="smooth"
       lang="en"
       className={`font-${inter} font-${mono} font-sans h-full antialiased `}

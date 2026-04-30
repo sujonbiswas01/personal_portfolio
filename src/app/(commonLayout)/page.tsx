@@ -1,5 +1,6 @@
 import Abouts from '@/components/About'
 import { ImagesSliderDemo } from '@/components/HeroSlider'
+import Skills from '@/components/Skill'
 import React from 'react'
 
 const HomePage = () => {
@@ -7,6 +8,7 @@ const HomePage = () => {
         <div className=''>
             <ImagesSliderDemo/>
             <Abouts/>
+            <Skills/>
         </div>
     )
 }

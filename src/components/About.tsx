@@ -21,7 +21,7 @@ const Abouts = () => {
     <section
       ref={container}
       id="about"
-      className="relative w-full min-h-screen flex items-center justify-center px-2 sm:px-6 lg:px-8 py-10 md:py-20 transition-all duration-300"
+      className="relative w-full min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-10 md:py-20 transition-all duration-300"
       style={{
         background:
           "radial-gradient(ellipse at 60% 20%, #15254b45 0%, transparent 75%)",
@@ -51,7 +51,7 @@ const Abouts = () => {
             transition={{ duration: 0.90, ease: "easeOut" }}
           >
             <motion.p
-              className="text-slate-100 text-base md:text-lg leading-relaxed bg-[#00e9be10] rounded transition-all"
+              className="text-slate-100 text-base md:text-lg leading-relaxed bg-[#00e9be10] rounded transition-all p-4"
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.55, delay: 0.12 }}
@@ -72,7 +72,7 @@ const Abouts = () => {
               ). I create seamless, responsive interfaces and architect robust, secure APIs.
             </motion.p>
             <motion.p
-              className="text-[#c7e3fa] text-base md:text-lg leading-relaxed bg-[#0577fd10] rounded transition-all"
+              className="text-[#c7e3fa] text-base md:text-lg leading-relaxed bg-[#0577fd10] rounded transition-all p-4"
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.55, delay: 0.22 }}
