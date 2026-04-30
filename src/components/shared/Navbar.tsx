@@ -7,7 +7,6 @@ import { usePathname } from "next/navigation";
 const navItems = [
   { name: "Home", href: "" },
   { name: "About", href: "#about" },
-  { name: "Service", href: "#service" },
   { name: "Skills", href: "#skills" },
   { name: "Projects", href: "#projects" },
   { name: "Education", href: "#education" },
@@ -85,7 +84,7 @@ export default function Navbar() {
 
         {/* Contact Button */}
         <Link
-          href="/contact"
+          href="#contact"
           className="hidden md:inline-flex px-4 py-2 text-sm rounded-md bg-blue-600 text-white hover:bg-blue-700 transition"
         >
           Contact

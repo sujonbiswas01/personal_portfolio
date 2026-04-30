@@ -41,12 +41,25 @@ export default function ContactForm() {
 
   return (
     <form
+    id='contact'
       ref={formRef}
       onSubmit={onSubmit}
       className="w-full max-w-md mx-auto p-6 rounded-lg bg-white dark:bg-zinc-950 shadow-md space-y-4 animate-fadeIn"
       style={{ animation: "fadeIn 0.9s cubic-bezier(.42,0,1,1)" }}
       autoComplete="off"
     >
+      {/* Title and Description */}
+      <div className="text-center mb-5">
+        <h2 className="text-2xl sm:text-3xl font-bold text-blue-700 dark:text-[#9EFF00] mb-2 tracking-tight">
+          Contact Me
+        </h2>
+        <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 max-w-lg mx-auto">
+          Please fill out the form below and I will respond promptly.
+        </p>
+        <div className="w-12 h-1 mt-4 mx-auto rounded-full bg-gradient-to-r from-blue-400 via-purple-400 to-pink-500 dark:from-[#9EFF00] dark:via-blue-400 dark:to-fuchsia-600" />
+      </div>
+ 
+ 
       {/* Email (required) */}
       <div>
         <label htmlFor="email" className="block text-sm font-semibold text-zinc-900 dark:text-zinc-100">
