@@ -47,7 +47,8 @@
     "skill": [
       {
         "id": 20,
-        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg",
+        "icon": "https://cdn.simpleicons.org/tailwindcss",
+  
         "percentage": "90",
         "name": "Tailwind CSS"
       },
@@ -154,28 +155,10 @@
         "name": "Netlify"
       },
       {
-        "id": 19,
-        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/render/render-original.svg",
-        "percentage": "85",
-        "name": "Render"
-      },
-      {
-        "id": 20,
-        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/railway/railway-original.svg",
-        "percentage": "85",
-        "name": "Railway"
-      },
-      {
         "id": 21,
-        "icon": "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/neon.svg",
+        "icon": "images/neon.svg",
         "percentage": "80",
         "name": "Neon DB"
-      },
-      {
-        "id": 22,
-        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg",
-        "percentage": "85",
-        "name": "Supabase"
       }
     ]
   },

@@ -144,9 +144,12 @@ const Skills = () => {
                       </div>
                     )}
 
-                    <p className="text-xs sm:text-sm md:text-base text-foreground font-medium leading-snug break-words">
-                      {skill.name}
-                    </p>
+                  <span className="ml-1 text-xs text-muted-foreground animate-fadeIn">
+                    {skill.name}
+                  </span>
+             
+               
+               
                   </motion.div>
                 ))}
               </div>

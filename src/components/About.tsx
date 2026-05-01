@@ -46,65 +46,109 @@ const Abouts = () => {
 
           <motion.div
             className="space-y-6 md:space-y-8 rounded-xl border-l-4 border-primary bg-muted/50 shadow-lg p-4 sm:p-5"
-            initial={{ opacity: 0, y: 60 }}
+            initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.7 }}
-            transition={{ duration: 1.2, ease: "linear" }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
           >
             <motion.p
               className="text-foreground text-sm sm:text-base md:text-lg leading-relaxed bg-background/50 rounded transition-all p-4"
-              initial={{ opacity: 0, x: -40 }}
+              initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7, delay: 0.1, ease: "linear" }}
               viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
             >
-              I'm Sujon Biswas, a Full-Stack Web Developer passionate about crafting modern, scalable, and high-performance web apps.
+              {"I'm Sujon Biswas, a Full-Stack Web Developer passionate about crafting modern, scalable, and high-performance web apps."}
               <br />
               <br />
-              My expertise spans the frontend (
-              React, Next.js, Javascript, TypeScript, Tailwind, Bootstrap, Firebase
-              ) and backend (
-              Node.js, Express, MongoDB, PostgreSQL, Prisma
-              ). I create seamless, responsive designs and architect robust, secure APIs for all devices and screen sizes.
+              {"My expertise spans the frontend ("}
+              <motion.span
+                className="font-semibold text-primary"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.3 }}
+              >
+                React, Next.js, Javascript, TypeScript, Tailwind, Bootstrap, Firebase
+              </motion.span>
+              {") and backend ("}
+              <motion.span
+                className="font-semibold text-primary"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.45 }}
+              >
+                Node.js, Express, MongoDB, PostgreSQL, Prisma
+              </motion.span>
+              {"). I create seamless, responsive designs and architect robust, secure APIs for all devices and screen sizes."}
             </motion.p>
             <motion.p
               className="text-foreground/90 text-sm sm:text-base md:text-lg leading-relaxed bg-background/60 rounded transition-all p-4"
-              initial={{ opacity: 0, x: 40 }}
+              initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7, delay: 0.25, ease: "linear" }}
               viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
             >
-              I'm dedicated to writing clean, maintainable code—always following best practices.
-              Skilled with design tools like Figma, Adobe Photoshop, Adobe Illustrator,
-              I bridge development and design for visually stunning user experiences.
-              My workflow includes Docker, Git, GitHub, and Vercel for smooth CI/CD.
+              {"I'm dedicated to writing clean, maintainable code—always following best practices."}
+              <br />
+              <motion.span
+                className="font-semibold text-primary"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.45, delay: 0.33 }}
+              >
+                Skilled with design tools like Figma, Adobe Photoshop, Adobe Illustrator,
+              </motion.span>
+              {" I bridge development and design for visually stunning user experiences."}
+              <br />
+              {"My workflow includes Docker, Git, GitHub, and Vercel for smooth CI/CD."}
             </motion.p>
             <motion.ul
               className="list-disc pl-6 mt-2 text-sm md:text-base text-muted-foreground space-y-1"
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.4, ease: "linear" }}
               viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.18, ease: "easeOut" }}
             >
-              <li>
+              <motion.li
+                initial={{ opacity: 0, x: -16 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.32 }}
+              >
                 <span className="text-primary font-semibold">Professional Training:</span> Programming Hero, Next Level Web Development, Udemy
-              </li>
-              <li>
+              </motion.li>
+              <motion.li
+                initial={{ opacity: 0, x: -16 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.41 }}
+              >
                 <span className="text-primary font-semibold">Education:</span> Computer Science &amp; Technology at Sylhet Polytechnic Institute
-              </li>
+              </motion.li>
             </motion.ul>
             <motion.p
               className="bg-gradient-to-r from-emerald-400 to-sky-400 bg-clip-text text-transparent font-semibold text-sm sm:text-base md:text-lg pt-2"
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.7, delay: 0.55, ease: "linear" }}
               viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.55, ease: "backOut" }}
             >
-              <span className="inline-block animate-pulse duration-1000">
+              <motion.span
+                className="inline-block animate-pulse duration-1000"
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.77 }}
+              >
                 “My passion? Innovating with code &amp; design to deliver meaningful digital experiences.”
-              </span>
+              </motion.span>
             </motion.p>
           </motion.div>
+     
+     
      
      
      
