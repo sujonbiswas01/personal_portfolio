@@ -46,16 +46,16 @@ const Abouts = () => {
 
           <motion.div
             className="space-y-6 md:space-y-8 rounded-xl border-l-4 border-primary bg-muted/50 shadow-lg p-4 sm:p-5"
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 60 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.6 }}
-            transition={{ duration: 0.90, ease: "easeOut" }}
+            viewport={{ once: true, amount: 0.7 }}
+            transition={{ duration: 1.2, ease: "linear" }}
           >
             <motion.p
               className="text-foreground text-sm sm:text-base md:text-lg leading-relaxed bg-background/50 rounded transition-all p-4"
-              initial={{ opacity: 0, x: -30 }}
+              initial={{ opacity: 0, x: -40 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.55, delay: 0.12 }}
+              transition={{ duration: 0.7, delay: 0.1, ease: "linear" }}
               viewport={{ once: true }}
             >
               I'm Sujon Biswas, a Full-Stack Web Developer passionate about crafting modern, scalable, and high-performance web apps.
@@ -69,9 +69,9 @@ const Abouts = () => {
             </motion.p>
             <motion.p
               className="text-foreground/90 text-sm sm:text-base md:text-lg leading-relaxed bg-background/60 rounded transition-all p-4"
-              initial={{ opacity: 0, x: 30 }}
+              initial={{ opacity: 0, x: 40 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.55, delay: 0.22 }}
+              transition={{ duration: 0.7, delay: 0.25, ease: "linear" }}
               viewport={{ once: true }}
             >
               I'm dedicated to writing clean, maintainable code—always following best practices.
@@ -81,9 +81,9 @@ const Abouts = () => {
             </motion.p>
             <motion.ul
               className="list-disc pl-6 mt-2 text-sm md:text-base text-muted-foreground space-y-1"
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.35 }}
+              transition={{ duration: 0.7, delay: 0.4, ease: "linear" }}
               viewport={{ once: true }}
             >
               <li>
@@ -95,9 +95,9 @@ const Abouts = () => {
             </motion.ul>
             <motion.p
               className="bg-gradient-to-r from-emerald-400 to-sky-400 bg-clip-text text-transparent font-semibold text-sm sm:text-base md:text-lg pt-2"
-              initial={{ opacity: 0, scale: 0.9 }}
+              initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.47 }}
+              transition={{ duration: 0.7, delay: 0.55, ease: "linear" }}
               viewport={{ once: true }}
             >
               <span className="inline-block animate-pulse duration-1000">
@@ -105,6 +105,8 @@ const Abouts = () => {
               </span>
             </motion.p>
           </motion.div>
+     
+     
      
      
         </motion.div>
@@ -115,7 +117,7 @@ const Abouts = () => {
           initial={{ opacity: 0, x: 70 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.95, ease: "backOut" }}
+          transition={{ duration: 0.95, ease: "linear" }}
         >
           <div className="relative group w-[86vw] sm:w-[300px] md:w-[340px] lg:w-[340px] max-w-xs rounded-2xl aspect-square bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900 overflow-hidden shadow-[0_8px_40px_0_#052d3260] flex items-center justify-center">
             {/* Decorative Ring */}

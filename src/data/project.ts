@@ -26,6 +26,7 @@ export type Project = {
         "Express.js", 
         "PostgreSQL", 
         "Prisma", 
+        "stripe",
         "BetterAuth"
       ],
       liveUrl: "https://frontend-next-level-assingment-4.vercel.app",
