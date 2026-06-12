@@ -65,12 +65,12 @@ export function ImagesSliderDemo() {
                 >
                   <FaInstagramSquare />
                 </a>
-                <a
+                {/* <a
                   href="https://www.linkedin.com/in/sujonbiswas1"
                   className="text-2xl sm:text-3xl text-white border-none outline-none cursor-pointer"
                 >
                   <FaLinkedin />
-                </a>
+                </a> */}
                 <a
                   href="https://www.facebook.com/sujonbiswas001/"
                   className="text-2xl sm:text-3xl text-white border-none outline-none cursor-pointer"
