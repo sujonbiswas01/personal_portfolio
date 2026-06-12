@@ -69,7 +69,7 @@ const Abouts = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: 0.3 }}
               >
-                React, Next.js, Javascript, TypeScript, Tailwind, Bootstrap, Firebase
+                React, Next.js, JavaScript, TypeScript, TailwindCss, Bootstrap, Firebase, Redux
               </motion.span>
               {") and backend ("}
               <motion.span
@@ -79,7 +79,7 @@ const Abouts = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: 0.45 }}
               >
-                Node.js, Express, MongoDB, PostgreSQL, Prisma
+                Node.js, Express, Golang, PostgreSQL, Prisma
               </motion.span>
               {"). I create seamless, responsive designs and architect robust, secure APIs for all devices and screen sizes."}
             </motion.p>
@@ -90,7 +90,7 @@ const Abouts = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
             >
-              {"I'm dedicated to writing clean, maintainable code—always following best practices."}
+              {"I'm dedicated to writing clean, maintainable code always following best practices."}
               <br />
               <motion.span
                 className="font-semibold text-primary"
@@ -118,7 +118,7 @@ const Abouts = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.32 }}
               >
-                <span className="text-primary font-semibold">Professional Training:</span> Programming Hero, Next Level Web Development, Udemy
+                <span className="text-primary font-semibold">Professional Training:</span> Next Level Web Development, Hablu Programmer, Udemy
               </motion.li>
               <motion.li
                 initial={{ opacity: 0, x: -16 }}

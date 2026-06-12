@@ -85,7 +85,7 @@
       },
         {
           "id": 12,
-          "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/golang/golang-original.svg",
+          "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg",
           "percentage": "90",
           "name": "Golang"
         } 
@@ -93,7 +93,7 @@
     ]
   },
   {
-    "title": "Payment Integration",
+    "title": "Payment System",
     "color": "#16a34a",
     "skill": [
       {
@@ -111,7 +111,7 @@
     ]
   },
   {
-    "title": "Database & ORM",
+    "title": "Database And ORM",
     "color": "#9333ea",
     "skill": [
       {
@@ -177,30 +177,6 @@
     ]
   },
   {
-    "title": "Deployment & Hosting",
-    "color": "#ea580c",
-    "skill": [
-      {
-            "id": 24,
-        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg",
-        "percentage": "95",
-        "name": "Vercel"
-      },
-      {
-        "id": 25,
-        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/netlify/netlify-original.svg",
-        "percentage": "90",
-        "name": "Netlify"
-      },
-      {
-        "id": 26,
-        "icon": "images/neon.svg",
-        "percentage": "80",
-        "name": "Neon DB"
-      }
-    ]
-  },
-  {
     "title": "UI/UX Design",
     "color": "#15803d",
     "skill": [
@@ -229,42 +205,65 @@
     "color": "#db2777",
     "skill": [
       {
-        "id": 30,
-        "icon": "",
+        "id": 1,
+        "icon": "/images/betterauth-auto.svg",
         "percentage": "90",
-        "name": "API Integration"
-      },
-      {
-        "id": 31,
-        "icon": "",
-        "percentage": "85",
-        "name": "SEO Optimization"
-      },
-      {
-        "id": 32,
-        "icon": "",
-        "percentage": "80",
         "name": "BetterAuth"
       },
       {
-        "id": 33,
-        "icon": "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/framer.svg",
-        "percentage": "85",
+        "id": 2,
+        "icon": "/images/framer-auto.svg",
+        "percentage": "95",
         "name": "Framer Motion"
       },
       {
-        "id": 34,
-        "icon": "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/greensock.svg",
-        "percentage": "75",
+        "id": 3,
+        "icon": "/images/gsap-auto.svg",
+        "percentage": "85",
         "name": "GSAP"
       },
       {
-      "id": 35,
-        "icon": "",
+        "id": 4,
+        "icon": "/images/lenis.png",
         "percentage": "80",
         "name": "Lenis"
+      },
+      {
+        "id": 5,
+        "icon": "/images/zod.webp",
+        "percentage": "92",
+        "name": "Zod"
+      },
+      {
+        "id": 6,
+        "icon": "/images/openai.png",
+        "percentage": "90",
+        "name": "OpenAI"
+      },
+      {
+        "id": 7,
+        "icon": "/images/rag.png",
+        "percentage": "85",
+        "name": "RAG Systems"
+      },
+      {
+        "id": 8,
+        "icon": "https://cdn.simpleicons.org/elasticstack",
+        "percentage": "80",
+        "name": "Logging Systems"
+      },
+      {
+        "id": 9,
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rabbitmq/rabbitmq-original.svg",
+        "percentage": "85",
+        "name": "Queue System"
+      },
+      {
+        "id": 10,
+        "icon": "https://cdn.simpleicons.org/sentry",
+        "percentage": "90",
+        "name": "Sentry Monitoring"
       }
- 
     ]
   }
 ]
