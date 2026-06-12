@@ -9,7 +9,7 @@ const education = [
   {
     title: "Diploma in Computer Science & Technology",
     org: "Sylhet Polytechnic Institute",
-    period: "2022 — Present",
+    period: "2023 — Present",
     detail:
       "Currently pursuing a diploma focused on programming, web development, databases, and software engineering fundamentals.",
   },

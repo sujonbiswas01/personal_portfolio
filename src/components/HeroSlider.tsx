@@ -60,19 +60,19 @@ export function ImagesSliderDemo() {
               </h1>
               <div className="flex gap-4 sm:gap-5 mt-4">
                 <a
-                  href="https://www.instagram.com/sujonbiswaseng"
+                  href="https://www.instagram.com/sujonbiswas01"
                   className="text-2xl sm:text-3xl text-white border-none outline-none cursor-pointer"
                 >
                   <FaInstagramSquare />
                 </a>
                 <a
-                  href="https://www.linkedin.com/in/sujonbiswaseng"
+                  href="https://www.linkedin.com/in/sujonbiswas1"
                   className="text-2xl sm:text-3xl text-white border-none outline-none cursor-pointer"
                 >
                   <FaLinkedin />
                 </a>
                 <a
-                  href="https://www.facebook.com/sujonbiswas2025/"
+                  href="https://www.facebook.com/sujonbiswas001/"
                   className="text-2xl sm:text-3xl text-white border-none outline-none cursor-pointer"
                 >
                   <FaFacebook />
@@ -86,7 +86,7 @@ export function ImagesSliderDemo() {
                 </a>
                 <a
                   className="text-3xl text-white border-none outline-none cursor-pointer"
-                  href="https://github.com/sujonbiswaseng"
+                  href="https://github.com/sujonbiswas01"
                 >
                   <FaGithub />
                 </a>
@@ -98,18 +98,7 @@ export function ImagesSliderDemo() {
          
 
               <div className="pt-3 pb-4 flex sm:flex-row flex-col items-stretch sm:items-center gap-3 sm:gap-4">
-                <motion.a
-                  whileHover={{
-                    scale: 1.08,
-                    boxShadow: "0px 4px 24px 0px #FD6F0055",
-                  }}
-                  whileTap={{ scale: 0.97 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                  className="bg-primary text-primary-foreground text-center font-semibold font-primary text-base lg:text-lg py-2 px-6 rounded-xl shadow-md"
-                  href="https://shorturl.at/Vv1bI"
-                >
-                  Hire Me
-                </motion.a>
+               
                 <motion.a
                   whileHover={{
                     scale: 1.08,
@@ -126,7 +115,7 @@ export function ImagesSliderDemo() {
                   }}
                   className="border border-primary text-white text-center font-semibold font-primary text-base lg:text-lg py-2 px-6 rounded-xl"
                   download
-                  href="/images/resume.pdf"
+                  href="https://drive.google.com/file/d/1wCNofVNfM7zXPdenB-zH6ruUATlBYPxJ/view?usp=sharing"
                 >
                   Download Resume
                 </motion.a>

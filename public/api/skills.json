@@ -38,7 +38,14 @@
         "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
         "percentage": "70",
         "name": "Next.js"
+      },
+      {
+        "id": 7,
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg",
+        "percentage": "80",
+        "name": "Redux"
       }
+      
     ]
   },
   {
@@ -46,14 +53,14 @@
     "color": "#06b6d4",
     "skill": [
       {
-        "id": 20,
+        "id": 8,
         "icon": "https://cdn.simpleicons.org/tailwindcss",
   
         "percentage": "90",
         "name": "Tailwind CSS"
       },
       {
-        "id": 21,
+        "id": 9,
         "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg",
         "percentage": "85",
         "name": "Bootstrap"
@@ -65,16 +72,41 @@
     "color": "#c026d3",
     "skill": [
       {
-        "id": 7,
+        "id": 10,
         "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
         "percentage": "90",
         "name": "Node.js"
       },
       {
-        "id": 8,
+        "id": 11,
         "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
         "percentage": "90",
         "name": "Express.js"
+      },
+        {
+          "id": 12,
+          "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/golang/golang-original.svg",
+          "percentage": "90",
+          "name": "Golang"
+        } 
+
+    ]
+  },
+  {
+    "title": "Payment Integration",
+    "color": "#16a34a",
+    "skill": [
+      {
+        "id": 13,
+        "icon": "https://cdn.simpleicons.org/stripe",
+        "percentage": "90",
+        "name": "Stripe"
+      },
+      {
+        "id": 14,
+        "icon": "https://cdn.simpleicons.org/mastercard",
+        "percentage": "85",
+        "name": "SSLCommerz"
       }
     ]
   },
@@ -83,22 +115,28 @@
     "color": "#9333ea",
     "skill": [
       {
-        "id": 9,
+        "id": 15,
         "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
         "percentage": "90",
         "name": "PostgreSQL"
       },
       {
-        "id": 10,
+        "id": 16,
         "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prisma/prisma-original.svg",
         "percentage": "85",
         "name": "Prisma ORM"
       },
       {
-        "id": 11,
+        "id": 17,
         "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg",
         "percentage": "80",
         "name": "Firebase"
+      },
+      {
+        "id": 18,
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg",
+        "percentage": "85",
+        "name": "Redis"
       }
     ]
   },
@@ -107,31 +145,31 @@
     "color": "#d97706",
     "skill": [
       {
-        "id": 12,
+        "id": 19,
         "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
         "percentage": "95",
         "name": "Git"
       },
       {
-        "id": 13,
+        "id": 20,
         "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
         "percentage": "95",
         "name": "GitHub"
       },
       {
-        "id": 14,
+        "id": 21,
         "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gitlab/gitlab-original.svg",
         "percentage": "85",
         "name": "GitLab"
       },
       {
-        "id": 15,
+        "id": 22,
         "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg",
         "percentage": "85",
         "name": "Linux"
       },
       {
-        "id": 16,
+        "id": 23,
         "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
         "percentage": "80",
         "name": "Docker"
@@ -143,19 +181,19 @@
     "color": "#ea580c",
     "skill": [
       {
-        "id": 17,
+            "id": 24,
         "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg",
         "percentage": "95",
         "name": "Vercel"
       },
       {
-        "id": 18,
+        "id": 25,
         "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/netlify/netlify-original.svg",
         "percentage": "90",
         "name": "Netlify"
       },
       {
-        "id": 21,
+        "id": 26,
         "icon": "images/neon.svg",
         "percentage": "80",
         "name": "Neon DB"
@@ -167,19 +205,19 @@
     "color": "#15803d",
     "skill": [
       {
-        "id": 23,
+        "id": 27,
         "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg",
         "percentage": "90",
         "name": "Figma"
       },
       {
-        "id": 24,
+        "id": 28,
         "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-plain.svg",
         "percentage": "80",
         "name": "Adobe Photoshop"
       },
       {
-        "id": 25,
+        "id": 29,
         "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/illustrator/illustrator-plain.svg",
         "percentage": "80",
         "name": "Adobe Illustrator"
@@ -191,37 +229,37 @@
     "color": "#db2777",
     "skill": [
       {
-        "id": 26,
+        "id": 30,
         "icon": "",
         "percentage": "90",
         "name": "API Integration"
       },
       {
-        "id": 27,
+        "id": 31,
         "icon": "",
         "percentage": "85",
         "name": "SEO Optimization"
       },
       {
-        "id": 28,
+        "id": 32,
         "icon": "",
         "percentage": "80",
         "name": "BetterAuth"
       },
       {
-        "id": 29,
+        "id": 33,
         "icon": "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/framer.svg",
         "percentage": "85",
         "name": "Framer Motion"
       },
       {
-        "id": 30,
+        "id": 34,
         "icon": "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/greensock.svg",
         "percentage": "75",
         "name": "GSAP"
       },
       {
-        "id": 31,
+      "id": 35,
         "icon": "",
         "percentage": "80",
         "name": "Lenis"
