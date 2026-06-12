@@ -13,24 +13,25 @@ export type Project = {
   
   export const projects: Project[] = [
     {
-      slug: "food-hub",
-      name: "FoodHub — Smart Food Ordering Platform",
+      slug: "Bitebase",
+      name: "Bitebase Advanced Full-Stack Multi-Vendor Food Ordering Platform",
       image: "/images/foodhub.png",
       description:
-        "A next-generation full-stack food ordering solution featuring a high-fidelity user marketplace and a comprehensive administrative control suite for real-time order and inventory management.",
+        "BiteBase is an AI-powered full-stack multi-vendor food ordering platform that allows customers to discover meals, place orders, and track deliveries, while vendors manage menus and orders through a secure and responsive dashboard. The platform includes smart AI features, secure authentication, payment integration, and scalable admin management for a seamless food delivery experience.",
       stack: [
         "Next.js", 
         "Tailwind CSS", 
         "TypeScript", 
         "Node.js", 
         "Express.js", 
-        "PostgreSQL", 
+        "PostgreSQL",
+        "RAG System", 
         "Prisma", 
         "stripe",
         "BetterAuth"
       ],
-      liveUrl: "https://frontend-next-level-assingment-4.vercel.app",
-      githubUrl: "https://github.com/sujonbiswaseng/frontend-next-level-assignment-4",
+      liveUrl: "https://full-stack-ecommerce-frontend-websi.vercel.app",
+      githubUrl: "https://github.com/sujonbiswas01/full-stack-ecommerce-frontend-food-website",
       challenges: [
         "Implementing complex relational data schemas with Prisma and PostgreSQL",
         "Building a responsive and interactive Admin Dashboard for multi-level management",
@@ -43,11 +44,11 @@ export type Project = {
       ],
     },
     {
-      slug: "planora",
-      name: "Planora – Event Management Platform",
+      slug: "lumen",
+      name: "lumen – Event Management Platform",
       image: "/images/planora.png",
-      description:
-        "A high-performance, full-stack event management platform designed to bridge the gap between event organizers and attendees. Planora provides a seamless workflow for event creation, secure payments, and role-based participant management.",
+      description:`Lumen is a high-performance, full-stack event management ecosystem engineered for the modern era. It serves as a comprehensive bridge between ambitious event organizers and global audiences. From high-capacity music festivals to intimate corporate seminars, Lumen provides a professional-grade suite of tools for event discovery, secure ticketing, and real-time participant management.
+Built with a focus on scalability, security, and intelligence, Lumen eliminates the friction of traditional planning by integrating AI-driven insights and a flawless, role-based user experience.`,
       stack: [
         "Next.js",
         "Tailwind CSS",
@@ -56,12 +57,13 @@ export type Project = {
         "Express.js",
         "Prisma ORM",
         "PostgreSQL",
+        "RAG System",
         "JWT",
         "Better-Auth",
         "Stripe"
       ],
-      liveUrl: "https://frontend-nextlevel-assignment-5.vercel.app",
-      githubUrl: "https://github.com/sujonbiswasdev/frontend-nextlevel-assignment-5",
+      liveUrl: "https://lumen-frontend-project.vercel.app/",
+      githubUrl: "https://github.com/sujonbiswas01/lumen-frontend-project",
       challenges: [
         "Implementing complex event access control (Public Free/Paid, Private Free/Paid) based on user roles and payment status",
         "Integrating Stripe securely for both public paid registrations and paying hosts for private events",

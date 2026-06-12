@@ -194,7 +194,7 @@ const Skills = () => {
                 <div className="relative flex items-center justify-center w-full min-h-[340px] sm:min-h-[340px] md:min-h-[390px] lg:min-h-[450px] xl:min-h-[520px] py-3">
                   {/* Circular Skill Track with Glow */}
                   <div
-                    className="absolute inset-0 flex items-center justify-center pointer-events-none"
+                    className="absolute inset-0 md:mt-6 md:left-6 flex items-center justify-center pointer-events-none"
                   >
                     <svg
                       viewBox="0 0 350 350"
@@ -202,8 +202,8 @@ const Skills = () => {
                       width="100%"
                       height="100%"
                       style={{
-                        maxWidth: 'min(80vw, 350px)',
-                        maxHeight: 'min(80vw, 350px)',
+                        maxWidth: 'min(90vw, 350px)',
+                        maxHeight: 'min(90vw, 350px)',
                         filter: `drop-shadow(0 0 34px ${activeSkillCategory?.color || "#8b5cf6"}33)`,
                         zIndex: 0,
                         position: 'absolute',
@@ -250,14 +250,14 @@ const Skills = () => {
                   </div>
 
                   {/* Center category title - bubble effect */}
-                  <div className="absolute left-1/2 top-1/2 z-10 flex flex-col items-center -translate-x-1/2 -translate-y-1/2">
+                  <div className="absolute  left-1/2 top-1/2 z-10 flex flex-col items-center -translate-x-1/2 -translate-y-1/2">
                     <div
-                      className="bg-white/90 dark:bg-neutral-900/90 rounded-full shadow-xl flex flex-col items-center justify-center border-4"
+                      className="bg-white/90  md:mt-4 md:ml-6 dark:bg-neutral-900/90 rounded-full shadow-xl flex flex-col items-center justify-center border-4"
                       style={{
                         borderColor: activeSkillCategory?.color,
                         minWidth: '92px',
                         minHeight: '92px',
-                        padding: "22px 20px"
+                        padding: "10px 20px"
                       }}
                     >
                       <span
@@ -271,99 +271,108 @@ const Skills = () => {
                     </div>
                   </div>
 
-                  {/* Skill icon bubbles positioned in a circle */}
                   <div
-                    className="absolute left-1/2 top-1/2 w-full h-full z-10"
+                    className="absolute left-1/2 top-1/2 z-10"
                     style={{
-                      maxWidth: "min(80vw, 350px)",
-                      maxHeight: "min(80vw, 350px)",
+                      width: "90vw",
+                      height: "90vw",
+                      maxWidth: "350px",
+                      maxHeight: "350px",
+                      minWidth: "200px",
+                      minHeight: "200px",
                       pointerEvents: "none",
                       transform: "translate(-50%, -50%)",
                     }}
                   >
-                    {activeSkillCategory?.skill.map((sk, idx, arrAll) => {
-                      const iconCount = arrAll.length;
-                      const angle = (2 * Math.PI / iconCount) * idx - Math.PI / 2; // Start from top
-                      // Responsive radius - scale by breakpoints
-                      let radius = 138;
-                      if (typeof window !== "undefined") {
-                        if (window.innerWidth < 480) radius = 50;
-                        else if (window.innerWidth < 640) radius = 78;
-                        else if (window.innerWidth < 900) radius = 102;
-                        else if (window.innerWidth < 1200) radius = 120;
-                        else radius = 138;
-                      }
+                    <div
+                      className="relative w-full h-full"
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                      }}
+                    >
+                      {activeSkillCategory?.skill.map((sk, idx, arrAll) => {
+                        const iconCount = arrAll.length;
+                        const angle = (2 * Math.PI / iconCount) * idx - Math.PI / 2;
+                        const radiusPercent = 43;
+                        const leftPercent = 50 + radiusPercent * Math.cos(angle);
+                        const topPercent = 50 + radiusPercent * Math.sin(angle);
 
-                      const center = 175;
-                      const x = center + radius * Math.cos(angle);
-                      const y = center + radius * Math.sin(angle);
-
-                      return (
-                        <div
-                          key={sk.name}
-                          className="skill-bubble group"
-                          style={{
-                            position: "absolute",
-                            left: `calc(${x}px - 1.8rem)`,
-                            top: `calc(${y}px - 1.8rem)`,
-                            width: "3.6rem",
-                            height: "3.6rem",
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            borderRadius: "99rem",
-                            background: "#fff",
-                            boxShadow: `0 3px 16px 0 ${activeSkillCategory?.color}14, 0 0 0 3px ${activeSkillCategory?.color}1a`,
-                            border: `3px solid ${activeSkillCategory?.color}`,
-                            transition: "transform 0.22s, box-shadow 0.22s",
-                            zIndex: 6,
-                            pointerEvents: "auto",
-                            cursor: "pointer",
-                          }}
-                          tabIndex={0}
-                          title={sk.name}
-                        >
-                          {sk.icon ? (
-                            <img
-                              src={sk.icon}
-                              alt={sk.name}
-                              className="object-contain animate-spin"
-                              style={{
-                                width: "2.2rem",
-                                height: "2.2rem",
-                                borderRadius: "99rem",
-                                boxShadow: `0 1px 6px 0 ${activeSkillCategory?.color}10`
-                              }}
-                            />
-                          ) : (
-                            <span
-                              className="block w-full text-center text-[.85rem] font-bold"
-                              style={{
-                                color: activeSkillCategory?.color
-                              }}
-                            >
-                              {sk.name.slice(0, 2)}
-                            </span>
-                          )}
-                          {/* Bubble label on hover/focus */}
-                          <span
-                            className="absolute left-1/2 top-[calc(100%+8px)] -translate-x-1/2 opacity-0 group-hover:opacity-100 group-focus:opacity-100 bg-black bg-opacity-70 text-white rounded px-2 py-1 text-xs font-semibold pointer-events-none shadow-lg whitespace-nowrap transition-opacity duration-200"
+                        return (
+                          <div
+                            key={sk.name}
+                            className="skill-bubble group"
+                            style={{
+                              position: "absolute",
+                              left: `calc(${leftPercent}% - 0.8rem)`,
+                              top: `calc(${topPercent}% - 0.8rem)`,
+                              width: "3.4rem",
+                              height: "3.4rem",
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "center",
+                              borderRadius: "100rem",
+                              background: "#fff",
+                              boxShadow: `0 3px 16px 0 ${activeSkillCategory?.color}14, 0 0 0 3px ${activeSkillCategory?.color}1a`,
+                              border: `3px solid ${activeSkillCategory?.color}`,
+                              transition: "transform 0.22s, box-shadow 0.22s",
+                              zIndex: 6,
+                              pointerEvents: "auto",
+                              cursor: "pointer",
+                              minWidth: "1.6rem",
+                              minHeight: "1.6rem",
+                            }}
+                            tabIndex={0}
+                            title={sk.name}
                           >
-                            {sk.name}
-                            
-                          </span>
-                        </div>
-                      );
-                    })}
+                            {sk.icon ? (
+                              <img
+                                src={sk.icon}
+                                alt={sk.name}
+                                className="object-contain animate-[spin_2s_linear_infinite]"
+                                style={{
+                                  width: "2.2rem",
+                                  height: "2.2rem",
+                                  minWidth: "1.1rem",
+                                  minHeight: "1.1rem",
+                                  borderRadius: "99rem",
+                                  boxShadow: `0 1px 6px 0 ${activeSkillCategory?.color}10`
+                                }}
+                              />
+                            ) : (
+                              <span
+                                className="block w-full text-center text-[.85rem] font-bold"
+                                style={{
+                                  color: activeSkillCategory?.color
+                                }}
+                              >
+                                {sk.name.slice(0, 2)}
+                              </span>
+                            )}
+                            {/* Bubble label on hover/focus */}
+                            <span
+                              className="absolute left-1/2 top-[calc(100%+8px)] -translate-x-1/2 opacity-0 group-hover:opacity-100 group-focus:opacity-100 bg-black bg-opacity-70 text-white rounded px-2 py-1 text-xs font-semibold pointer-events-none shadow-lg whitespace-nowrap transition-opacity duration-200"
+                            >
+                              {sk.name}
+                            </span>
+                          </div>
+                        );
+                      })}
+                    </div>
                   </div>
-
-                  {/* Advanced Responsiveness */}
                   <style>
                     {`
+                      .skill-bubble {
+                        aspect-ratio: 1/1;
+                      }
                       @media (max-width: 1024px) {
                         .skill-bubble {
                           width: 2.8rem !important;
                           height: 2.8rem !important;
+                        }
+                        .skill-bubble img {
+                          width: 1.6rem !important;
+                          height: 1.6rem !important;
                         }
                       }
                       @media (max-width: 640px) {
@@ -372,18 +381,23 @@ const Skills = () => {
                           height: 2.1rem !important;
                         }
                         .skill-bubble img {
-                          width: 1.3rem !important;
-                          height: 1.3rem !important;
+                          width: 1.2rem !important;
+                          height: 1.2rem !important;
                         }
                       }
                       @media (max-width: 480px) {
                         .skill-bubble {
-                          width: 1.6rem !important;
-                          height: 1.6rem !important;
+                          width: 1.4rem !important;
+                          height: 1.4rem !important;
+                        }
+                        .skill-bubble img {
+                          width: 0.7rem !important;
+                          height: 0.7rem !important;
                         }
                       }
                     `}
                   </style>
+   
                 </div>
               </div>
             </div>
