@@ -87,50 +87,51 @@ const Skills = () => {
       </style>
       <div className="app-shell">
         {/* Title */}
+
         <motion.div
-          className="text-center mb-10 md:mb-12"
+          className="text-center"
           initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, ease: "linear" }}
         >
-          <h2 className="font-black text-2xl sm:text-3xl md:text-4xl lg:text-5xl bg-gradient-to-r from-primary to-violet-500 bg-clip-text text-transparent">
-            My Recent Skills
+          <h2 className="font-black text-4xl md:text-6xl text-foreground tracking-tight mt-4 lg:mt-6  mb-4">
+            My Recent <span className="text-primary">Skills</span>
           </h2>
         </motion.div>
 
         {/* Professional Button Bar */}
         <div className="flex flex-wrap justify-center gap-2 sm:gap-4 ">
           {arr.map((item, idx) => {
-              const isActive = activeSkill === item;
-              const activeColor = getCategoryColor(item);
-          
-              const randomDelay = `${Math.random() * 2}s`;
+            const isActive = activeSkill === item;
+            const activeColor = getCategoryColor(item);
+
+            const randomDelay = `${Math.random() * 2}s`;
             return (
               <motion.button
-              key={idx}
-              type="button"
-              onClick={() => setActiveSkill(item)}
-              className={`
+                key={idx}
+                type="button"
+                onClick={() => setActiveSkill(item)}
+                className={`
                 relative px-5 py-2 rounded-full font-semibold
                 shadow-sm border transition-all
                 ${isActive ? "text-white scale-105" : "text-muted-foreground hover:text-primary"}
                 ${isActive ? "" : "bg-muted hover:bg-accent border-transparent"}
                 animate-bounce
               `}
-              style={{
-                animationDelay: randomDelay,
-                animationDuration: "2.5s",
-                background: isActive
-                  ? `linear-gradient(90deg, ${activeColor}, #8b5cf6 130%)`
-                  : undefined,
-                borderColor: isActive ? activeColor : undefined,
-              }}
-              whileTap={{ scale: 0.97 }}
-              whileHover={{ scale: isActive ? 1.1 : 1.04 }}
-            >
-              <span className="relative z-10">{item}</span>
-            </motion.button>
+                style={{
+                  animationDelay: randomDelay,
+                  animationDuration: "2.5s",
+                  background: isActive
+                    ? `linear-gradient(90deg, ${activeColor}, #8b5cf6 130%)`
+                    : undefined,
+                  borderColor: isActive ? activeColor : undefined,
+                }}
+                whileTap={{ scale: 0.97 }}
+                whileHover={{ scale: isActive ? 1.1 : 1.04 }}
+              >
+                <span className="relative z-10">{item}</span>
+              </motion.button>
             );
           })}
         </div>
@@ -386,11 +387,11 @@ const Skills = () => {
                       }
                     `}
                   </style>
-   
+
                 </div>
               </div>
             </div>
- 
+
           )}
         </div>
       </div>

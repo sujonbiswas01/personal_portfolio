@@ -162,7 +162,7 @@ export function ImagesSliderDemo() {
         transition={{ duration: 0.6 }}
         className="z-50 app-shell w-full"
       >
-        <motion.div className="relative">
+        <motion.div className="relative px-2 md:px-4">
           <div className="flex flex-col gap-10 md:gap-6 md:flex-row justify-between items-center">
             <div className="text-left  w-full relative z-20 space-y-3">
               <h1 className="font-primary font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight text-white drop-shadow-[0_4px_18px_rgba(0,0,0,0.65)]">

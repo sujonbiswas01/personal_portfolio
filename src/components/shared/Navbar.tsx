@@ -111,15 +111,16 @@ export default function Navbar() {
             {Array.isArray(navItems) && navItems.length > 0 ? (
               navItems.map((item) => {
                 const active = isActive(item.href, hash);
+                const desktopBase = "px-4 py-2 transition-all duration-300 ease-out rounded-full text-sm md:text-base focus:outline-none";
+                const desktopActive = "bg-gradient-to-b from-primary/10 to-primary/5 text-primary font-semibold shadow-[0_2px_10px_rgba(99,102,241,0.1)] border border-primary/20 ring-1 ring-primary/10";
+                const desktopInactive = "text-foreground/70 hover:text-foreground hover:bg-foreground/5 font-medium";
+
                 return (
                   item.href.startsWith("#") ? (
                     <a
                       key={item.name}
                       href={item.href}
-                      className={`px-2 py-1 transition-all duration-200 ease-out rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-primary ${active
-                        ? "text-primary font-semibold"
-                        : "text-foreground opacity-65 hover:opacity-100 hover:text-primary"
-                        }`}
+                      className={`${desktopBase} ${active ? desktopActive : desktopInactive}`}
                     >
                       {item.name}
                     </a>
@@ -129,10 +130,7 @@ export default function Navbar() {
                       href={item.href}
                       scroll={false}
                       onClick={() => setHash("")}
-                      className={`px-2 py-1 transition-all duration-200 ease-out rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-primary ${active
-                        ? "text-primary font-semibold"
-                        : "text-foreground opacity-65 hover:opacity-100 hover:text-primary"
-                        }`}
+                      className={`${desktopBase} ${active ? desktopActive : desktopInactive}`}
                     >
                       {item.name}
                     </Link>
@@ -177,9 +175,9 @@ export default function Navbar() {
       )}
 
       {open && (
-        <div className="fixed z-50 inset-0 flex md:hidden bg-background/95 transition-all duration-300">
+        <div className="md:hidden h-screen">
           {/* Sidebar */}
-          <aside className="relative flex flex-col w-full h-full max-w-full bg-background shadow-sm border-r border-border">
+          <aside className="relative flex flex-col w-full h-full max-w-full bg-black shadow-sm border-r border-border">
             {/* Header */}
             <div className="flex items-center justify-between px-6 py-6 border-b border-border">
               <Link
@@ -209,15 +207,16 @@ export default function Navbar() {
             <nav className="flex flex-col gap-6 px-7 py-10 w-full">
               {navItems.map((item) => {
                 const active = isActive(item.href, hash);
+                const mobileBase = "w-full px-5 py-4 rounded-2xl text-lg font-medium transition-all duration-300 ease-out outline-none flex items-center";
+                const mobileActive = "bg-gradient-to-r from-primary/15 to-transparent text-primary shadow-[inset_2px_0_0_0_var(--primary)] border border-primary/20 bg-primary/5";
+                const mobileInactive = "text-foreground/70 hover:text-foreground hover:bg-foreground/5 hover:translate-x-1";
+
                 return item.href.startsWith("#") ? (
                   <a
                     key={item.name}
                     href={item.href}
                     onClick={() => setOpen(false)}
-                    className={`w-full px-4 py-3 rounded-xl text-lg font-medium transition-all duration-200 ease-out outline-none focus-visible:ring-2 focus-visible:ring-primary ${active
-                      ? "bg-primary/10 text-primary border border-primary/20"
-                      : "text-foreground opacity-70 hover:opacity-100 hover:bg-primary/5 hover:text-primary"
-                      }`}
+                    className={`${mobileBase} ${active ? mobileActive : mobileInactive}`}
                   >
                     {item.name}
                   </a>
@@ -227,10 +226,7 @@ export default function Navbar() {
                     href={item.href}
                     scroll={false}
                     onClick={() => { setOpen(false); setHash(""); }}
-                    className={`w-full px-4 py-3 rounded-xl text-lg font-medium transition-all duration-200 ease-out outline-none focus-visible:ring-2 focus-visible:ring-primary ${active
-                      ? "bg-primary/10 text-primary border border-primary/20"
-                      : "text-foreground opacity-70 hover:opacity-100 hover:bg-primary/5 hover:text-primary"
-                      }`}
+                    className={`${mobileBase} ${active ? mobileActive : mobileInactive}`}
                   >
                     {item.name}
                   </Link>
