@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import LoadingContent from "../LoadingContent";
 
 const navItems = [
   { name: "Home", href: "" },
@@ -35,78 +36,77 @@ export default function Navbar() {
   }, [darkMode]);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/80 bg-background/95 backdrop-blur-md shadow-sm">
-      
-      {/* ✅ Container aligned with rootlayout */}
-     {!open &&  <div className="app-shell h-16 md:h-[4.25rem] flex items-center justify-between">
-        
-      {/* Logo */}
-      <Link href="/" className="flex items-center">
-        <img
-          src="/images/sujon_logo.png"
-          alt="Logo"
-          className="w-10 h-10 sm:w-11 sm:h-11 object-contain"
-        />
-      </Link>
+    <header className="sticky top-0 z-50 w-full bg-background/95 border-b border-border/80 backdrop-blur-md shadow-sm">
+      {!open && (
+        <div className=" px-4 sm:px-6 lg:px-8 h-16 md:h-[4.25rem] flex items-center justify-between">
+          <Link href="/" className="flex items-center">
+            <img
+              src="/images/sujon_logo.png"
+              alt="Logo"
+              className="w-12 h-12 md:w-14 md:h-14 object-contain"
+            />
+          </Link>
 
-      {/* Desktop Menu */}
-      <nav className="hidden md:flex items-center gap-5 lg:gap-7 text-sm font-medium">
-        {navItems.map((item) => {
-          const active = isActive(item.href, hash);
-          return (
-            <a
-              key={item.name}
-              href={item.href}
-              className={`transition ${
-                active
-                  ? "text-primary font-semibold"
-                  : "text-muted-foreground hover:text-primary"
-              }`}
+          <nav className="hidden md:flex items-center gap-8 lg:gap-10 text-base font-medium">
+            {navItems.length === 0 || navItems.length<0 || !navItems? (
+              <LoadingContent data="Content loading...." />
+            ) : (
+              navItems.map((item) => {
+                const active = isActive(item.href, hash);
+                return (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    className={`px-2 py-1 transition-all duration-200 ease-out rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
+                      active
+                        ? "text-primary font-semibold"
+                        : "text-foreground opacity-65 hover:opacity-100 hover:text-primary"
+                    }`}
+                  >
+                    {item.name}
+                  </a>
+                );
+              })
+            )}
+          </nav>
+
+          {/* Right Side */}
+          <div className="flex items-center gap-3">
+            {/* Dark Mode Toggle */}
+            <button
+              onClick={() => setDarkMode(!darkMode)}
+              className="text-2xl transition-all duration-200 ease-out text-foreground opacity-70 hover:opacity-100 outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-xl px-2 py-1"
+              aria-label="Toggle dark mode"
             >
-              {item.name}
-            </a>
-          );
-        })}
-      </nav>
+              {darkMode ? "🌙" : "☀️"}
+            </button>
 
-      {/* Right Side */}
-      <div className="flex items-center gap-2 sm:gap-3">
-        
-        {/* Dark Mode Toggle */}
-        <button
-          onClick={() => setDarkMode(!darkMode)}
-          className="text-lg text-muted-foreground hover:text-primary transition"
-        >
-          {darkMode ? "🌙" : "☀️"}
-        </button>
+            <Link
+              href="#contact"
+              className="inline-flex items-center px-6 py-2 text-base font-semibold rounded-xl bg-primary text-white hover:-translate-y-1 hover:shadow-md transition-all duration-200 ease-out focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+            >
+              Contact
+            </Link>
+       
 
-        {/* Contact Button */}
-        <Link
-          href="#contact"
-          className="hidden md:inline-flex px-4 py-2 text-sm rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition"
-        >
-          Contact
-        </Link>
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setOpen(true)}
+              className="md:hidden text-3xl text-foreground px-2 py-1 rounded-xl transition duration-200 ease-out outline-none focus-visible:ring-2 focus-visible:ring-primary"
+              aria-label="Open menu"
+            >
+              ☰
+            </button>
+          </div>
+        </div>
+      )}
 
-        {/* Mobile Menu Button */}
-        <button
-          onClick={() => setOpen(true)}
-          className="md:hidden text-2xl text-foreground"
-        >
-          ☰
-        </button>
-      </div>
-    </div>}
-
-      {/* ✅ Mobile Menu (your structure, improved color) */}
       {open && (
-        <div className="fixed z-50 flex min-w-full min-h-full md:hidden bg-black/60 transition-all duration-300">
-          
+        <div className="fixed z-50 inset-0 flex md:hidden bg-background/95 transition-all duration-300">
           {/* Sidebar */}
-          <aside className="relative flex flex-col min-w-full min-h-full max-w-full bg-background shadow-2xl border-r border-border">
-            
+          <aside className="relative flex flex-col w-full h-full max-w-full bg-background shadow-sm border-r border-border">
             {/* Header */}
-            <div className="flex items-center justify-between px-6 py-5 border-b border-border">
+            <div className="flex items-center justify-between px-6 py-6 border-b border-border">
               <Link
                 href="/"
                 onClick={() => setOpen(false)}
@@ -115,20 +115,21 @@ export default function Navbar() {
                 <img
                   src="/images/sujon_logo.png"
                   alt="Logo"
-                  className="w-11 h-11 object-contain"
+                  className="w-14 h-14 object-contain"
                 />
               </Link>
 
               <button
                 onClick={() => setOpen(false)}
-                className="text-3xl text-muted-foreground hover:text-primary"
+                className="text-4xl text-foreground px-2 py-1 rounded-xl transition duration-200 ease-out focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                aria-label="Close menu"
               >
                 &times;
               </button>
             </div>
 
             {/* Nav Items */}
-            <nav className="flex flex-col gap-3 px-6 py-7 w-full">
+            <nav className="flex flex-col gap-6 px-7 py-10 w-full">
               {navItems.map((item) => {
                 const active = isActive(item.href, hash);
                 return (
@@ -136,10 +137,10 @@ export default function Navbar() {
                     key={item.name}
                     href={item.href}
                     onClick={() => setOpen(false)}
-                    className={`w-full px-4 py-2 rounded-lg text-base font-medium transition ${
+                    className={`w-full px-4 py-3 rounded-xl text-lg font-medium transition-all duration-200 ease-out outline-none focus-visible:ring-2 focus-visible:ring-primary ${
                       active
-                        ? "bg-primary/10 text-primary border border-primary/30"
-                        : "text-muted-foreground hover:bg-primary/5 hover:text-primary"
+                        ? "bg-primary/10 text-primary border border-primary/20"
+                        : "text-foreground opacity-70 hover:opacity-100 hover:bg-primary/5 hover:text-primary"
                     }`}
                   >
                     {item.name}
@@ -147,14 +148,8 @@ export default function Navbar() {
                 );
               })}
 
-              {/* Contact */}
-              <Link
-                href="#contact"
-                onClick={() => setOpen(false)}
-                className="mt-8 w-full px-4 py-3 rounded-lg bg-primary text-primary-foreground text-center font-semibold shadow-lg hover:bg-primary/90 transition"
-              >
-                Contact
-              </Link>
+         
+         
             </nav>
 
             <div className="flex-grow" />

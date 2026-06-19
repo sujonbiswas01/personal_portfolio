@@ -6,11 +6,10 @@ import { ImagesSliderDemo } from "@/components/HeroSlider";
 import { ProjectCard } from "@/components/ProjectCard";
 import Skills from "@/components/Skill";
 import { projects } from "@/data/project";
-import React from "react";
 
 const HomePage = () => {
   return (
-    <div>
+    <div className="">
       <ImagesSliderDemo />
       <Abouts />
       <Skills />

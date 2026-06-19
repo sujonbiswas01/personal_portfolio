@@ -12,184 +12,94 @@ const Abouts = () => {
       gsap.fromTo(
         container.current,
         { opacity: 0, y: 60 },
-        { opacity: 1, y: 0, duration: 1.2, ease: "power2.out" }
+        { opacity: 1, y: 0, duration: 0.8, ease: "linear" }
       );
     }
   }, []);
 
   return (
-    <section
-      ref={container}
-      id="about"
-      className="relative w-full flex items-center justify-center section-space transition-all duration-300"
-      style={{
-        background:
-          "radial-gradient(ellipse at 60% 20%, #15254b45 0%, transparent 75%)",
-      }}
-    >
-      <div className="relative z-10 app-shell">
-        <div className="w-full bg-card/95 border border-border rounded-2xl shadow-xl overflow-hidden flex flex-col-reverse lg:flex-row items-center justify-between gap-8 md:gap-10 lg:gap-14 backdrop-blur-xl p-5 sm:p-6 lg:p-8">
-        {/* Left: Textual Content */}
-        <motion.div
-          className="w-full lg:w-[60%] flex flex-col justify-center"
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, ease: "backOut" }}
-        >
-          <h2 className="font-primary text-center lg:text-left font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary via-sky-400 to-emerald-400 text-3xl sm:text-4xl md:text-5xl mb-5 tracking-tight select-none">
-            About{" "}
-            <span className="bg-gradient-to-r from-emerald-400 to-primary bg-clip-text text-transparent">
-              Me
-            </span>
-          </h2>
-
+    <div className="bg-background">
+      <section
+        ref={container}
+        id="about"
+        className="w-full flex items-center justify-center py-14 md:py-20 transition-all duration-200 ease-out"
+        style={{
+          background:
+            "radial-gradient(ellipse at 60% 20%, #15254b45 0%, transparent 75%)",
+        }}
+      >
+        <div className="relative border border-primary/20 rounded-3xl shadow-sm overflow-hidden z-10 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 ">
           <motion.div
-            className="space-y-6 md:space-y-8 rounded-xl border-l-4 border-primary bg-muted/50 shadow-lg p-4 sm:p-5"
-            initial={{ opacity: 0, y: 40 }}
+            className="text-center mb-8"
+            initial={{ opacity: 0, y: -30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
+            transition={{ duration: 0.12, ease: "linear" }}
           >
-            <motion.p
-              className="text-foreground text-sm sm:text-base md:text-lg leading-relaxed bg-background/50 rounded transition-all p-4"
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-            >
-              {"I'm Sujon Biswas, a Full-Stack Web Developer passionate about crafting modern, scalable, and high-performance web apps."}
-              <br />
-              <br />
-              {"My expertise spans the frontend ("}
-              <motion.span
-                className="font-semibold text-primary"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: 0.3 }}
-              >
-                React, Next.js, JavaScript, TypeScript, TailwindCss, Bootstrap, Firebase, Redux
-              </motion.span>
-              {") and backend ("}
-              <motion.span
-                className="font-semibold text-primary"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: 0.45 }}
-              >
-                Node.js, Express, Golang, PostgreSQL, Prisma
-              </motion.span>
-              {"). I create seamless, responsive designs and architect robust, secure APIs for all devices and screen sizes."}
-            </motion.p>
-            <motion.p
-              className="text-foreground/90 text-sm sm:text-base md:text-lg leading-relaxed bg-background/60 rounded transition-all p-4"
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-            >
-              {"I'm dedicated to writing clean, maintainable code always following best practices."}
-              <br />
-              <motion.span
-                className="font-semibold text-primary"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.45, delay: 0.33 }}
-              >
-                Skilled with design tools like Figma, Adobe Photoshop, Adobe Illustrator,
-              </motion.span>
-              {" I bridge development and design for visually stunning user experiences."}
-              <br />
-              {"My workflow includes Docker, Git, GitHub, and Vercel for smooth CI/CD."}
-            </motion.p>
-            <motion.ul
-              className="list-disc pl-6 mt-2 text-sm md:text-base text-muted-foreground space-y-1"
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.18, ease: "easeOut" }}
-            >
-              <motion.li
-                initial={{ opacity: 0, x: -16 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.32 }}
-              >
-                <span className="text-primary font-semibold">Professional Training:</span> Next Level Web Development, Hablu Programmer, Udemy
-              </motion.li>
-              <motion.li
-                initial={{ opacity: 0, x: -16 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.41 }}
-              >
-                <span className="text-primary font-semibold">Education:</span> Computer Science &amp; Technology at Sylhet Polytechnic Institute
-              </motion.li>
-            </motion.ul>
-            <motion.p
-              className="bg-gradient-to-r from-emerald-400 to-sky-400 bg-clip-text text-transparent font-semibold text-sm sm:text-base md:text-lg pt-2"
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.55, ease: "backOut" }}
-            >
-              <motion.span
-                className="inline-block animate-pulse duration-1000"
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.77 }}
-              >
-                “My passion? Innovating with code &amp; design to deliver meaningful digital experiences.”
-              </motion.span>
-            </motion.p>
+            <h2 className="font-black text-4xl md:text-6xl text-foreground tracking-tight mt-4 lg:mt-6">
+              About <span className="text-primary">Me</span>
+            </h2>
           </motion.div>
-     
-     
-     
-     
-     
-     
-        </motion.div>
+          <div className="w-full bg-card  flex flex-col-reverse lg:flex-row items-center gap-8 lg:gap-14 backdrop-blur pb-10 md:pb-14 transition-all duration-200 ease-out">
+            {/* Left: Textual Content */}
+            <motion.div
+              className="w-full lg:w-[58%] flex flex-col justify-center "
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.28, ease: "linear" }}
+            >
+              <div className="space-y-6 text-left">
+                <p className="text-base md:text-lg text-foreground leading-relaxed max-w-2xl">
+                I am Sujon Biswas, a Computer Science and Technology diploma student at Sylhet Polytechnic Institute and a passionate Full Stack Developer from Sylhet, Bangladesh. I started my journey in technology with basic computer skills, which quickly grew into a strong interest in programming. I began with Python, learned Data Structures and Algorithms using Java, and explored multiple technologies to build a solid software engineering foundation.
+                </p>
+                <p className="text-base md:text-lg text-foreground leading-relaxed max-w-2xl">
+                I later moved into web development and started building real-world applications, focusing on creating scalable, responsive, and user-friendly systems. Currently, I am improving my backend development skills with Go (Golang) while continuously working on projects and learning modern technologies.
+                </p>
+                <p className="text-base md:text-lg text-foreground leading-relaxed max-w-2xl">
+                My goal is to grow as a software engineer and ultimately become an AI Engineer, contributing to innovative solutions that make a meaningful impact.
+                </p>
+              
+                
+              </div>
+            </motion.div>
 
-        {/* Right: Image Content */}
-        <motion.div
-          className="relative w-full sm:w-[320px] md:w-[380px] lg:w-[380px] flex items-center justify-center py-2 lg:py-0"
-          initial={{ opacity: 0, x: 70 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.95, ease: "linear" }}
-        >
-          <div className="relative group w-[86vw] sm:w-[300px] md:w-[340px] lg:w-[340px] max-w-xs rounded-2xl aspect-square bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900 overflow-hidden shadow-[0_8px_40px_0_#052d3260] flex items-center justify-center">
-            {/* Decorative Ring */}
-            <div className="absolute inset-0 z-10 pointer-events-none rounded-2xl ring-4 ring-primary/20 ring-offset-2 ring-offset-slate-900 group-hover:ring-primary/40 transition-all duration-300" />
-            {/* Image */}
-            <img
-              src="https://res.cloudinary.com/drmeagmkl/image/upload/v1765536346/sujonbiswas_exfo5o.jpg"
-              alt="Sujon Biswas"
-              className="rounded-2xl w-full h-full object-cover border-4 border-[#101e2c]/40 group-hover:scale-105 transition-transform duration-300"
-              loading="lazy"
-            />
-            {/* Overlay effect */}
-            <div className="absolute inset-0 bg-gradient-to-t opacity-75 from-[#101e2ca7] to-transparent z-20 rounded-2xl group-hover:opacity-60 transition-opacity duration-300" />
-            {/* Artistic accent - angled gradient swipe */}
-            <div className="absolute left-[-15%] top-0 w-[55%] h-full bg-gradient-to-tl from-[#0577fd40] to-transparent rotate-[-22deg] pointer-events-none z-30" />
-            {/* Corner badge */}
-            <span className="absolute bottom-4 right-4 z-40 bg-primary/90 px-4 py-1 rounded-md text-primary-foreground font-bold text-xs tracking-wide shadow-lg border border-primary/70">
-              Full-Stack Dev 💻
-            </span>
+            {/* Right: Image Content */}
+            <motion.div
+              className="relative w-full sm:w-[300px] md:w-[340px] lg:w-[340px] flex items-center justify-center py-4 md:py-0"
+              initial={{ opacity: 0, x: 54 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.3, ease: "linear" }}
+            >
+              <div className="relative group w-full max-w-xs rounded-3xl aspect-square bg-card border border-primary/10 overflow-hidden shadow-sm flex items-center justify-center transition-all duration-200 ease-out">
+                {/* Decorative Ring */}
+                <div className="absolute inset-0 z-10 pointer-events-none rounded-3xl ring-2 ring-primary/10 group-hover:ring-primary/20 ring-offset-0 transition-all duration-200 ease-out" />
+                {/* Image */}
+                <img
+                  src="https://res.cloudinary.com/drmeagmkl/image/upload/v1765536346/sujonbiswas_exfo5o.jpg"
+                  alt="Sujon Biswas"
+                  className="rounded-3xl w-full h-full object-cover border-2 border-primary/10 group-hover:scale-105 transition-transform duration-200 ease-out"
+                  loading="lazy"
+                />
+                {/* Overlay effect */}
+                <div className="absolute inset-0 bg-primary/5 z-20 rounded-3xl group-hover:opacity-80 transition-opacity duration-200 ease-out" />
+                {/* Artistic accent - subtle swipe */}
+                <div className="absolute left-[-10%] top-0 w-[45%] h-full bg-primary/10 rotate-[-18deg] pointer-events-none z-30" />
+                {/* Corner badge */}
+                <span className="absolute bottom-4 right-4 z-40 bg-primary px-4 py-1 rounded-xl text-background font-bold text-sm tracking-wide shadow-md border border-primary/30 transition-all duration-200 ease-out select-none">
+                  Full-Stack Dev 💻
+                </span>
+              </div>
+            </motion.div>
+
+            {/* Decorative Radial Glow */}
+            <div className="absolute left-[-48px] top-1/2 -translate-y-1/2 h-[120px] w-[120px] rounded-full bg-primary/10 blur-3xl opacity-20 pointer-events-none -z-10" />
+            <div className="absolute right-[-18px] bottom-[-22px] h-[58px] w-[58px] rounded-full bg-primary/10 blur-2xl opacity-25 pointer-events-none -z-10" />
           </div>
-        </motion.div>
-
-        {/* Decorative Radial Glow */}
-        <div className="absolute left-[-60px] top-1/2 -translate-y-1/2 h-[190px] w-[190px] rounded-full bg-primary/20 blur-3xl opacity-30 pointer-events-none -z-10" />
-        <div className="absolute right-[-30px] bottom-[-30px] h-[110px] w-[110px] rounded-full bg-emerald-300/30 blur-2xl opacity-40 pointer-events-none -z-10" />
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 };
 
