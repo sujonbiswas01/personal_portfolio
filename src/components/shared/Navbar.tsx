@@ -14,7 +14,6 @@ const navItems = [
 ];
 
 function isActive(href: string, hash: string) {
-  // Special handling for Home, since its href is "/"
   if (href === "/") return hash === "" || hash === "#";
   return hash === href;
 }
@@ -24,28 +23,75 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(true);
   const [mounted, setMounted] = useState(false);
-
-  // Only update hash on client to avoid Next hydration mismatch
   useEffect(() => {
     setMounted(true);
-    // Get initial hash, fallback to "" for home
+
     setHash(window.location.hash);
 
     const handleHashChange = () => setHash(window.location.hash);
     window.addEventListener("hashchange", handleHashChange);
     return () => window.removeEventListener("hashchange", handleHashChange);
   }, []);
-
   useEffect(() => {
     if (mounted) {
       document.documentElement.classList.toggle("dark", darkMode);
     }
   }, [darkMode, mounted]);
 
-  // Prevent mismatches by not rendering nav until mounted on client
   if (!mounted) {
     return (
-      <header className="sticky top-0 z-50 w-full bg-background/95 border-b border-border/80 backdrop-blur-md shadow-sm" />
+      <header className="sticky top-0 z-50 w-full bg-background/95 border-b border-border/80 backdrop-blur-md shadow-sm">
+        <div className="px-4 sm:px-6 lg:px-8 h-16 md:h-[4.25rem] flex items-center justify-between">
+          <div className="flex items-center">
+            <img
+              src="/images/sujon_logo.png"
+              alt="Logo"
+              className="w-12 h-12 md:w-14 md:h-14 object-contain"
+            />
+          </div>
+          <nav className="hidden md:flex items-center gap-8 lg:gap-10 text-base font-medium">
+            {Array.isArray(navItems) && navItems.length > 0 ? (
+              navItems.map((item) => {
+                const active = isActive(item.href, hash);
+                return (
+                  item.href.startsWith("#") ? (
+                    <a
+                      key={item.name}
+                      href={item.href}
+                      className={`px-2 py-1 transition-all duration-200 ease-out rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-primary ${active
+                        ? "text-primary font-semibold"
+                        : "text-foreground opacity-65 hover:opacity-100 hover:text-primary"
+                        }`}
+                    >
+                      {item.name}
+                    </a>
+                  ) : (
+                    <Link
+                      key={item.name}
+                      href={item.href}
+                      scroll={false}
+                      className={`px-2 py-1 transition-all duration-200 ease-out rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-primary ${active
+                        ? "text-primary font-semibold"
+                        : "text-foreground opacity-65 hover:opacity-100 hover:text-primary"
+                        }`}
+                    >
+                      {item.name}
+                    </Link>
+                  )
+                );
+              })
+            ) : (
+              <LoadingContent data="Content loading...." />
+            )}
+          </nav>
+          <div className="flex items-center gap-3">
+            <span className="text-2xl text-foreground opacity-70 px-2 py-1">🌙</span>
+            <span className="inline-flex items-center px-6 py-2 text-base font-semibold rounded-xl bg-primary text-white">
+              Contact
+            </span>
+          </div>
+        </div>
+      </header>
     );
   }
 
@@ -53,7 +99,7 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 w-full bg-background/95 border-b border-border/80 backdrop-blur-md shadow-sm">
       {!open && (
         <div className="px-4 sm:px-6 lg:px-8 h-16 md:h-[4.25rem] flex items-center justify-between">
-          <Link href="/" className="flex items-center" scroll={false}>
+          <Link href="/" className="flex items-center" scroll={false} onClick={() => setHash("")}>
             <img
               src="/images/sujon_logo.png"
               alt="Logo"
@@ -70,11 +116,10 @@ export default function Navbar() {
                     <a
                       key={item.name}
                       href={item.href}
-                      className={`px-2 py-1 transition-all duration-200 ease-out rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
-                        active
-                          ? "text-primary font-semibold"
-                          : "text-foreground opacity-65 hover:opacity-100 hover:text-primary"
-                      }`}
+                      className={`px-2 py-1 transition-all duration-200 ease-out rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-primary ${active
+                        ? "text-primary font-semibold"
+                        : "text-foreground opacity-65 hover:opacity-100 hover:text-primary"
+                        }`}
                     >
                       {item.name}
                     </a>
@@ -83,11 +128,11 @@ export default function Navbar() {
                       key={item.name}
                       href={item.href}
                       scroll={false}
-                      className={`px-2 py-1 transition-all duration-200 ease-out rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
-                        active
-                          ? "text-primary font-semibold"
-                          : "text-foreground opacity-65 hover:opacity-100 hover:text-primary"
-                      }`}
+                      onClick={() => setHash("")}
+                      className={`px-2 py-1 transition-all duration-200 ease-out rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-primary ${active
+                        ? "text-primary font-semibold"
+                        : "text-foreground opacity-65 hover:opacity-100 hover:text-primary"
+                        }`}
                     >
                       {item.name}
                     </Link>
@@ -139,7 +184,7 @@ export default function Navbar() {
             <div className="flex items-center justify-between px-6 py-6 border-b border-border">
               <Link
                 href="/"
-                onClick={() => setOpen(false)}
+                onClick={() => { setOpen(false); setHash(""); }}
                 className="flex items-center"
                 scroll={false}
               >
@@ -169,11 +214,10 @@ export default function Navbar() {
                     key={item.name}
                     href={item.href}
                     onClick={() => setOpen(false)}
-                    className={`w-full px-4 py-3 rounded-xl text-lg font-medium transition-all duration-200 ease-out outline-none focus-visible:ring-2 focus-visible:ring-primary ${
-                      active
-                        ? "bg-primary/10 text-primary border border-primary/20"
-                        : "text-foreground opacity-70 hover:opacity-100 hover:bg-primary/5 hover:text-primary"
-                    }`}
+                    className={`w-full px-4 py-3 rounded-xl text-lg font-medium transition-all duration-200 ease-out outline-none focus-visible:ring-2 focus-visible:ring-primary ${active
+                      ? "bg-primary/10 text-primary border border-primary/20"
+                      : "text-foreground opacity-70 hover:opacity-100 hover:bg-primary/5 hover:text-primary"
+                      }`}
                   >
                     {item.name}
                   </a>
@@ -182,12 +226,11 @@ export default function Navbar() {
                     key={item.name}
                     href={item.href}
                     scroll={false}
-                    onClick={() => setOpen(false)}
-                    className={`w-full px-4 py-3 rounded-xl text-lg font-medium transition-all duration-200 ease-out outline-none focus-visible:ring-2 focus-visible:ring-primary ${
-                      active
-                        ? "bg-primary/10 text-primary border border-primary/20"
-                        : "text-foreground opacity-70 hover:opacity-100 hover:bg-primary/5 hover:text-primary"
-                    }`}
+                    onClick={() => { setOpen(false); setHash(""); }}
+                    className={`w-full px-4 py-3 rounded-xl text-lg font-medium transition-all duration-200 ease-out outline-none focus-visible:ring-2 focus-visible:ring-primary ${active
+                      ? "bg-primary/10 text-primary border border-primary/20"
+                      : "text-foreground opacity-70 hover:opacity-100 hover:bg-primary/5 hover:text-primary"
+                      }`}
                   >
                     {item.name}
                   </Link>

@@ -41,32 +41,48 @@ export const ImagesSlider: React.FC<ImagesSliderProps> = ({
     setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
   }, [images.length]);
 
+  // Preload images progressively - show first one immediately when ready
   useEffect(() => {
     if (!isClient) return;
     let isMounted = true;
-    Promise.all(
-      images.map((src) => {
-        return new Promise<string>((resolve, reject) => {
-          const img = new window.Image();
-          img.src = src;
-          img.onload = () => resolve(src);
-          img.onerror = reject;
-        });
-      })
-    )
-      .then((loaded) => {
+
+    // Load images one by one for faster first paint
+    const loadImage = (src: string): Promise<string> => {
+      return new Promise((resolve, reject) => {
+        const img = new window.Image();
+        img.src = src;
+        img.onload = () => resolve(src);
+        img.onerror = reject;
+      });
+    };
+
+    // Load first image fast, then rest in parallel
+    loadImage(images[0])
+      .then((first) => {
         if (isMounted) {
-          setLoadedImages(loaded);
+          setLoadedImages([first]);
           setShowBg(true);
+        }
+        // Load remaining images in background
+        return Promise.all(images.slice(1).map(loadImage));
+      })
+      .then((rest) => {
+        if (isMounted) {
+          setLoadedImages([images[0], ...rest]);
         }
       })
       .catch((error) => {
-        setShowBg(false);
+        // Even on error, try to show what we have
+        if (isMounted && loadedImages.length === 0) {
+          setShowBg(false);
+        }
         console.error("Failed to preload images:", error);
       });
+
     return () => {
       isMounted = false;
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [images, isClient]);
 
   useEffect(() => {
@@ -119,7 +135,7 @@ export const ImagesSlider: React.FC<ImagesSliderProps> = ({
 
   const imagesReady = loadedImages.length > 0 && showBg;
 
-  // Only render contents on client to prevent hydration mismatch
+  // Server render: show a styled placeholder immediately (not blank)
   if (!isClient) {
     return (
       <section
@@ -132,12 +148,28 @@ export const ImagesSlider: React.FC<ImagesSliderProps> = ({
         aria-live="polite"
         tabIndex={0}
       >
+        {/* Gradient placeholder while SSR */}
         <div
-          className={cn(
-            "absolute inset-0 w-full h-full z-0 pointer-events-none"
-          )}
-          aria-hidden="true"
-        ></div>
+          className="absolute inset-0 w-full h-full z-0"
+          style={{
+            background: "linear-gradient(135deg, #0f172a 0%, #1e1b4b 40%, #0f172a 100%)",
+          }}
+        />
+        {/* Overlay */}
+        {overlay && (
+          <div
+            className={cn(
+              "absolute inset-0 z-10 bg-gradient-to-tr from-background/30 via-background/30 to-background/30 pointer-events-none",
+              overlayClassName
+            )}
+          />
+        )}
+        {/* Render children even during SSR for faster perceived load */}
+        <div className="relative z-20 select-none pointer-events-auto w-full h-full flex items-center justify-center">
+          <React.Fragment>
+            {children}
+          </React.Fragment>
+        </div>
       </section>
     );
   }
@@ -158,7 +190,7 @@ export const ImagesSlider: React.FC<ImagesSliderProps> = ({
         <AnimatePresence initial={false} mode="wait">
           <motion.img
             key={currentIndex}
-            src={loadedImages[currentIndex]}
+            src={loadedImages[currentIndex % loadedImages.length]}
             initial="initial"
             animate="visible"
             exit={direction === "up" ? "upExit" : "downExit"}
@@ -183,15 +215,25 @@ export const ImagesSlider: React.FC<ImagesSliderProps> = ({
         </div>
       )}
 
-      {/* Fallback static background if images are not ready */}
+      {/* Fallback gradient background if images are not ready */}
       {!imagesReady && (
         <div
-          className={cn(
-            "absolute inset-0 w-full h-full z-0 pointer-events-none"
-          )}
+          className="absolute inset-0 w-full h-full z-0 pointer-events-none"
+          style={{
+            background: "linear-gradient(135deg, #0f172a 0%, #1e1b4b 40%, #0f172a 100%)",
+          }}
           aria-hidden="true"
-        ></div>
+        />
       )}
+      {!imagesReady && overlay && (
+        <div
+          className={cn(
+            "absolute inset-0 z-10 bg-gradient-to-tr from-background/30 via-background/30 to-background/30 pointer-events-none",
+            overlayClassName
+          )}
+        />
+      )}
+
       <div className="relative z-20 select-none pointer-events-auto w-full h-full flex items-center justify-center">
         <React.Fragment>
           {children}

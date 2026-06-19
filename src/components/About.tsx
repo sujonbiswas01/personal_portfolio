@@ -81,16 +81,17 @@ const Abouts = () => {
                 <div className="absolute inset-0 z-10 pointer-events-none rounded-3xl ring-2 ring-primary/10 group-hover:ring-primary/20 ring-offset-0 transition-all duration-200 ease-out" />
                 {/* Image */}
                 {loading && (
-        <div className="absolute inset-0 rounded-3xl animate-pulse">
-          <div className="w-full h-full bg-gradient-to-r from-neutral-200 via-neutral-300 to-neutral-200 dark:from-neutral-800 dark:via-neutral-700 dark:to-neutral-800" />
-        </div>
-      )}
+                  <div className="absolute inset-0 rounded-3xl animate-pulse">
+                    <div className="w-full h-full bg-gradient-to-r from-neutral-200 via-neutral-300 to-neutral-200 dark:from-neutral-800 dark:via-neutral-700 dark:to-neutral-800" />
+                  </div>
+                )}
 
-                <Image src="/images/web.webp" 
-                alt="Sujon Biswas" 
-                fill 
-                className={` object-cover rounded-3xl border border-primary/10 transition-all duration-500 ${loading ? "opacity-0 scale-105" : "opacity-100 scale-100"} `}
-                 onLoad={() => setLoading(false)} />
+                <Image src="/images/sujonbiswas.webp"
+                  alt="Sujon Biswas"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className={` object-cover rounded-3xl border border-primary/10 transition-all duration-500 ${loading ? "opacity-0 scale-105" : "opacity-100 scale-100"} `}
+                  onLoad={() => setLoading(false)} />
                 {/* Overlay effect */}
                 <div className="absolute inset-0 bg-primary/5 z-20 rounded-3xl group-hover:opacity-80 transition-opacity duration-200 ease-out" />
                 {/* Artistic accent - subtle swipe */}
