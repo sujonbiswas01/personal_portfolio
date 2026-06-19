@@ -35,6 +35,7 @@ export default function RootLayout({
         data-gr-ext-installed=""
         className={`w-full overflow-x-hidden min-h-screen font-sans antialiased bg-background`}
       >
+          
         {children}
         <ToastContainer />
       </body>

@@ -1,4 +1,5 @@
 import Abouts from "@/components/About";
+import Bumble from "@/components/Bumble";
 import ContactForm from "@/components/ContactForm";
 // import ContactForm from "@/components/ContactForm";
 import EducationPage from "@/components/Education";
@@ -10,6 +11,7 @@ import { projects } from "@/data/project";
 const HomePage = () => {
   return (
     <div className="">
+       <Bumble/>
       <ImagesSliderDemo />
       <Abouts />
       <Skills />

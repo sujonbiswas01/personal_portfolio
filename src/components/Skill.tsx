@@ -54,7 +54,7 @@ const Skills = () => {
       gsap.fromTo(
         container.current,
         { opacity: 0, y: 60 },
-        { opacity: 1, y: 0, duration: 1, ease: "power2.out" }
+        { opacity: 1, y: 0, duration: 0.6, ease: "linear" }
       );
     }
   }, []);
@@ -92,7 +92,7 @@ const Skills = () => {
           initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
+          transition={{ duration: 0.5, ease: "linear" }}
         >
           <h2 className="font-black text-2xl sm:text-3xl md:text-4xl lg:text-5xl bg-gradient-to-r from-primary to-violet-500 bg-clip-text text-transparent">
             My Recent Skills
@@ -100,48 +100,37 @@ const Skills = () => {
         </motion.div>
 
         {/* Professional Button Bar */}
-        <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-8">
+        <div className="flex flex-wrap justify-center gap-2 sm:gap-4 ">
           {arr.map((item, idx) => {
-            const isActive = activeSkill === item;
-            const activeColor = getCategoryColor(item);
+              const isActive = activeSkill === item;
+              const activeColor = getCategoryColor(item);
+          
+              const randomDelay = `${Math.random() * 2}s`;
             return (
               <motion.button
-                key={idx}
-                type="button"
-                onClick={() => setActiveSkill(item)}
-                className={`relative px-5 py-2 rounded-full font-semibold shadow-sm border transition-all
-                  ${
-                    isActive
-                      ? "text-white scale-105"
-                      : "text-muted-foreground hover:text-primary"
-                  }
-                  ${
-                    isActive
-                      ? ""
-                      : "bg-muted hover:bg-accent border-transparent"
-                  }
-                `}
-                style={isActive ? {
-                  background: `linear-gradient(90deg, ${activeColor}, #8b5cf6 130%)`,
-                  borderColor: activeColor,
-                } : {}}
-                whileTap={{ scale: 0.97 }}
-                whileHover={{ scale: isActive ? 1.1 : 1.04 }}
-                aria-current={isActive}
-              >
-                <span className="tracking-tight">{item}</span>
-                {isActive ? (
-                  <motion.div
-                    layoutId="activeSkillGlow"
-                    className="absolute inset-0 rounded-full pointer-events-none"
-                    style={{
-                      boxShadow: `0 0 12px 2px ${activeColor}70, 0 2px 8px 0 ${activeColor}22`,
-                      zIndex: 0,
-                    }}
-                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                  ></motion.div>
-                ) : null}
-              </motion.button>
+              key={idx}
+              type="button"
+              onClick={() => setActiveSkill(item)}
+              className={`
+                relative px-5 py-2 rounded-full font-semibold
+                shadow-sm border transition-all
+                ${isActive ? "text-white scale-105" : "text-muted-foreground hover:text-primary"}
+                ${isActive ? "" : "bg-muted hover:bg-accent border-transparent"}
+                animate-bounce
+              `}
+              style={{
+                animationDelay: randomDelay,
+                animationDuration: "2.5s",
+                background: isActive
+                  ? `linear-gradient(90deg, ${activeColor}, #8b5cf6 130%)`
+                  : undefined,
+                borderColor: isActive ? activeColor : undefined,
+              }}
+              whileTap={{ scale: 0.97 }}
+              whileHover={{ scale: isActive ? 1.1 : 1.04 }}
+            >
+              <span className="relative z-10">{item}</span>
+            </motion.button>
             );
           })}
         </div>

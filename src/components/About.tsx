@@ -1,11 +1,14 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import gsap from "gsap";
+import Image from "next/image";
 
 const Abouts = () => {
   const container = useRef<HTMLDivElement>(null);
+  const [loading, setLoading] =
+    useState(true);
 
   useEffect(() => {
     if (container.current) {
@@ -22,7 +25,7 @@ const Abouts = () => {
       <section
         ref={container}
         id="about"
-        className="w-full flex items-center justify-center py-14 md:py-20 transition-all duration-200 ease-out"
+        className="w-full flex items-center justify-center transition-all duration-200 linear"
         style={{
           background:
             "radial-gradient(ellipse at 60% 20%, #15254b45 0%, transparent 75%)",
@@ -30,13 +33,13 @@ const Abouts = () => {
       >
         <div className="relative border border-primary/20 rounded-3xl shadow-sm overflow-hidden z-10 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 ">
           <motion.div
-            className="text-center mb-8"
+            className="text-center"
             initial={{ opacity: 0, y: -30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.12, ease: "linear" }}
+            transition={{ duration: 0.5, ease: "linear" }}
           >
-            <h2 className="font-black text-4xl md:text-6xl text-foreground tracking-tight mt-4 lg:mt-6">
+            <h2 className="font-black text-4xl md:text-6xl text-foreground tracking-tight mt-4 lg:mt-6  mb-4">
               About <span className="text-primary">Me</span>
             </h2>
           </motion.div>
@@ -51,16 +54,16 @@ const Abouts = () => {
             >
               <div className="space-y-6 text-left">
                 <p className="text-base md:text-lg text-foreground leading-relaxed max-w-2xl">
-                I am Sujon Biswas, a Computer Science and Technology diploma student at Sylhet Polytechnic Institute and a passionate Full Stack Developer from Sylhet, Bangladesh. I started my journey in technology with basic computer skills, which quickly grew into a strong interest in programming. I began with Python, learned Data Structures and Algorithms using Java, and explored multiple technologies to build a solid software engineering foundation.
+                  I am Sujon Biswas, a Computer Science and Technology diploma student at Sylhet Polytechnic Institute and a passionate Full Stack Developer from Sylhet, Bangladesh. I started my journey in technology with basic computer skills, which quickly grew into a strong interest in programming. I began with Python, learned Data Structures and Algorithms using Java, and explored multiple technologies to build a solid software engineering foundation.
                 </p>
                 <p className="text-base md:text-lg text-foreground leading-relaxed max-w-2xl">
-                I later moved into web development and started building real-world applications, focusing on creating scalable, responsive, and user-friendly systems. Currently, I am improving my backend development skills with Go (Golang) while continuously working on projects and learning modern technologies.
+                  I later moved into web development and started building real-world applications, focusing on creating scalable, responsive, and user-friendly systems. Currently, I am improving my backend development skills with Go (Golang) while continuously working on projects and learning modern technologies.
                 </p>
                 <p className="text-base md:text-lg text-foreground leading-relaxed max-w-2xl">
-                My goal is to grow as a software engineer and ultimately become an AI Engineer, contributing to innovative solutions that make a meaningful impact.
+                  My goal is to grow as a software engineer and ultimately become an AI Engineer, contributing to innovative solutions that make a meaningful impact.
                 </p>
-              
-                
+
+
               </div>
             </motion.div>
 
@@ -73,15 +76,21 @@ const Abouts = () => {
               transition={{ duration: 0.3, ease: "linear" }}
             >
               <div className="relative group w-full max-w-xs rounded-3xl aspect-square bg-card border border-primary/10 overflow-hidden shadow-sm flex items-center justify-center transition-all duration-200 ease-out">
+
                 {/* Decorative Ring */}
                 <div className="absolute inset-0 z-10 pointer-events-none rounded-3xl ring-2 ring-primary/10 group-hover:ring-primary/20 ring-offset-0 transition-all duration-200 ease-out" />
                 {/* Image */}
-                <img
-                  src="https://res.cloudinary.com/drmeagmkl/image/upload/v1765536346/sujonbiswas_exfo5o.jpg"
-                  alt="Sujon Biswas"
-                  className="rounded-3xl w-full h-full object-cover border-2 border-primary/10 group-hover:scale-105 transition-transform duration-200 ease-out"
-                  loading="lazy"
-                />
+                {loading && (
+        <div className="absolute inset-0 rounded-3xl animate-pulse">
+          <div className="w-full h-full bg-gradient-to-r from-neutral-200 via-neutral-300 to-neutral-200 dark:from-neutral-800 dark:via-neutral-700 dark:to-neutral-800" />
+        </div>
+      )}
+
+                <Image src="/images/web.webp" 
+                alt="Sujon Biswas" 
+                fill 
+                className={` object-cover rounded-3xl border border-primary/10 transition-all duration-500 ${loading ? "opacity-0 scale-105" : "opacity-100 scale-100"} `}
+                 onLoad={() => setLoading(false)} />
                 {/* Overlay effect */}
                 <div className="absolute inset-0 bg-primary/5 z-20 rounded-3xl group-hover:opacity-80 transition-opacity duration-200 ease-out" />
                 {/* Artistic accent - subtle swipe */}

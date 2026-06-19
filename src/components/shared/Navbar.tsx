@@ -4,8 +4,9 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import LoadingContent from "../LoadingContent";
 
+// Use hash-based navigation, hydrated on client only to avoid hydration mismatch
 const navItems = [
-  { name: "Home", href: "" },
+  { name: "Home", href: "/" },
   { name: "About", href: "#about" },
   { name: "Skills", href: "#skills" },
   { name: "Projects", href: "#projects" },
@@ -13,33 +14,46 @@ const navItems = [
 ];
 
 function isActive(href: string, hash: string) {
-  if (href === "") return hash === "";
+  // Special handling for Home, since its href is "/"
+  if (href === "/") return hash === "" || hash === "#";
   return hash === href;
 }
 
 export default function Navbar() {
-  const [hash, setHash] = useState(() =>
-    typeof window !== "undefined" ? window.location.hash : ""
-  );
+  const [hash, setHash] = useState("");
   const [open, setOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(true);
+  const [mounted, setMounted] = useState(false);
 
+  // Only update hash on client to avoid Next hydration mismatch
   useEffect(() => {
+    setMounted(true);
+    // Get initial hash, fallback to "" for home
+    setHash(window.location.hash);
+
     const handleHashChange = () => setHash(window.location.hash);
     window.addEventListener("hashchange", handleHashChange);
-
     return () => window.removeEventListener("hashchange", handleHashChange);
   }, []);
 
   useEffect(() => {
-    document.documentElement.classList.toggle("dark", darkMode);
-  }, [darkMode]);
+    if (mounted) {
+      document.documentElement.classList.toggle("dark", darkMode);
+    }
+  }, [darkMode, mounted]);
+
+  // Prevent mismatches by not rendering nav until mounted on client
+  if (!mounted) {
+    return (
+      <header className="sticky top-0 z-50 w-full bg-background/95 border-b border-border/80 backdrop-blur-md shadow-sm" />
+    );
+  }
 
   return (
     <header className="sticky top-0 z-50 w-full bg-background/95 border-b border-border/80 backdrop-blur-md shadow-sm">
       {!open && (
-        <div className=" px-4 sm:px-6 lg:px-8 h-16 md:h-[4.25rem] flex items-center justify-between">
-          <Link href="/" className="flex items-center">
+        <div className="px-4 sm:px-6 lg:px-8 h-16 md:h-[4.25rem] flex items-center justify-between">
+          <Link href="/" className="flex items-center" scroll={false}>
             <img
               src="/images/sujon_logo.png"
               alt="Logo"
@@ -48,25 +62,40 @@ export default function Navbar() {
           </Link>
 
           <nav className="hidden md:flex items-center gap-8 lg:gap-10 text-base font-medium">
-            {navItems.length === 0 || navItems.length<0 || !navItems? (
-              <LoadingContent data="Content loading...." />
-            ) : (
+            {Array.isArray(navItems) && navItems.length > 0 ? (
               navItems.map((item) => {
                 const active = isActive(item.href, hash);
                 return (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    className={`px-2 py-1 transition-all duration-200 ease-out rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
-                      active
-                        ? "text-primary font-semibold"
-                        : "text-foreground opacity-65 hover:opacity-100 hover:text-primary"
-                    }`}
-                  >
-                    {item.name}
-                  </a>
+                  item.href.startsWith("#") ? (
+                    <a
+                      key={item.name}
+                      href={item.href}
+                      className={`px-2 py-1 transition-all duration-200 ease-out rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
+                        active
+                          ? "text-primary font-semibold"
+                          : "text-foreground opacity-65 hover:opacity-100 hover:text-primary"
+                      }`}
+                    >
+                      {item.name}
+                    </a>
+                  ) : (
+                    <Link
+                      key={item.name}
+                      href={item.href}
+                      scroll={false}
+                      className={`px-2 py-1 transition-all duration-200 ease-out rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
+                        active
+                          ? "text-primary font-semibold"
+                          : "text-foreground opacity-65 hover:opacity-100 hover:text-primary"
+                      }`}
+                    >
+                      {item.name}
+                    </Link>
+                  )
                 );
               })
+            ) : (
+              <LoadingContent data="Content loading...." />
             )}
           </nav>
 
@@ -74,26 +103,27 @@ export default function Navbar() {
           <div className="flex items-center gap-3">
             {/* Dark Mode Toggle */}
             <button
-              onClick={() => setDarkMode(!darkMode)}
+              onClick={() => setDarkMode((prev) => !prev)}
               className="text-2xl transition-all duration-200 ease-out text-foreground opacity-70 hover:opacity-100 outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-xl px-2 py-1"
               aria-label="Toggle dark mode"
+              type="button"
             >
               {darkMode ? "🌙" : "☀️"}
             </button>
 
-            <Link
+            <a
               href="#contact"
               className="inline-flex items-center px-6 py-2 text-base font-semibold rounded-xl bg-primary text-white hover:-translate-y-1 hover:shadow-md transition-all duration-200 ease-out focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
             >
               Contact
-            </Link>
-       
+            </a>
 
             {/* Mobile Menu Button */}
             <button
               onClick={() => setOpen(true)}
               className="md:hidden text-3xl text-foreground px-2 py-1 rounded-xl transition duration-200 ease-out outline-none focus-visible:ring-2 focus-visible:ring-primary"
               aria-label="Open menu"
+              type="button"
             >
               ☰
             </button>
@@ -111,6 +141,7 @@ export default function Navbar() {
                 href="/"
                 onClick={() => setOpen(false)}
                 className="flex items-center"
+                scroll={false}
               >
                 <img
                   src="/images/sujon_logo.png"
@@ -123,6 +154,7 @@ export default function Navbar() {
                 onClick={() => setOpen(false)}
                 className="text-4xl text-foreground px-2 py-1 rounded-xl transition duration-200 ease-out focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                 aria-label="Close menu"
+                type="button"
               >
                 &times;
               </button>
@@ -132,7 +164,7 @@ export default function Navbar() {
             <nav className="flex flex-col gap-6 px-7 py-10 w-full">
               {navItems.map((item) => {
                 const active = isActive(item.href, hash);
-                return (
+                return item.href.startsWith("#") ? (
                   <a
                     key={item.name}
                     href={item.href}
@@ -145,11 +177,22 @@ export default function Navbar() {
                   >
                     {item.name}
                   </a>
+                ) : (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    scroll={false}
+                    onClick={() => setOpen(false)}
+                    className={`w-full px-4 py-3 rounded-xl text-lg font-medium transition-all duration-200 ease-out outline-none focus-visible:ring-2 focus-visible:ring-primary ${
+                      active
+                        ? "bg-primary/10 text-primary border border-primary/20"
+                        : "text-foreground opacity-70 hover:opacity-100 hover:bg-primary/5 hover:text-primary"
+                    }`}
+                  >
+                    {item.name}
+                  </Link>
                 );
               })}
-
-         
-         
             </nav>
 
             <div className="flex-grow" />

@@ -38,21 +38,27 @@ const timelineItem: Variants = {
 
 export default function EducationPage() {
   return (
-    <section id="education" className="w-full section-space bg-gradient-to-br from-background via-accent/20 to-background transition-colors">
-      <div className="app-shell">
+    <section id="education" className="w-full section-space bg-gradient-to-br from-background via-accent/20 to-background transition-colors px-4 md:px-6 lg:px-8">
+      <div className="">
         {/* HEADER */}
         <motion.div
-          className="text-center mb-14"
+          className="text-center"
           initial={{ opacity: 0, y: -40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, type: "spring", stiffness: 80 }}
         >
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-tight">
-            Education &{" "}
-            <span className="bg-gradient-to-r from-indigo-500 via-fuchsia-500 to-green-400 bg-clip-text text-transparent animate-gradient-move">
-              Experience
-            </span>
-          </h1>
+        
+          <motion.div
+            className="text-center"
+            initial={{ opacity: 0, y: -30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, ease: "linear" }}
+          >
+            <h2 className="font-black text-4xl md:text-6xl text-foreground tracking-tight ">
+            Education &{" "} <span className="text-primary">Experience</span>
+            </h2>
+          </motion.div>
           <motion.p
             className="mt-5 text-muted-foreground max-w-full mx-auto text-sm sm:text-base md:text-lg"
             initial={{ opacity: 0, y: 30 }}
@@ -115,7 +121,7 @@ function Timeline({
       </div>
 
       {/* Timeline */}
-      <div className="relative border-l-4 border-gradient-l min-h-[120px] space-y-12">
+      <div className="relative border-l-4 border-gradient-l min-h-[120px] space-y-12 px-4 md:px-6 lg:px-8">
         {data.map((item, i) => (
           <motion.div
             variants={timelineItem}
