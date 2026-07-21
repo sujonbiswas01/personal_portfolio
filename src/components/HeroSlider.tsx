@@ -34,7 +34,7 @@ const SOCIAL_LINKS = [
 const PROFILE_IMAGE_URL =
   "https://res.cloudinary.com/dcbgdaiod/image/upload/v1777515695/copy_of_ownerprofile_mf6mfl_08a0a6.png";
 const CV_LINK =
-  "https://drive.google.com/file/d/1wCNofVNfM7zXPdenB-zH6ruUATlBYPxJ/view?usp=sharing";
+  "https://drive.google.com/file/d/1ojtmUKLqn1RdtVetXv1_nY6rCcYBbCBI/view?usp=sharing";
 
 const developerRoles = [
   "Frontend Developer",

@@ -47,19 +47,19 @@ const Footer = () => {
             <div className="flex gap-4 sm:gap-5 items-center">
              
               <a
-                href="https://www.instagram.com/sujonbiswaseng"
+                href="https://www.instagram.com/sujonbiswas01"
                 className="text-xl text-muted-foreground hover:text-primary border-none outline-none cursor-pointer transition-transform hover:scale-110"
               >
                 <FaInstagramSquare />
               </a>
               <a
-                href="https://www.linkedin.com/in/sujonbiswaseng"
+                href="https://www.linkedin.com/in/sujonbiswas001"
                 className="text-xl text-muted-foreground hover:text-primary border-none outline-none cursor-pointer transition-transform hover:scale-110"
               >
                 <FaLinkedin />
               </a>
               <a
-                href="https://www.facebook.com/sujonbiswas2025/"
+                href="https://www.facebook.com/sujonbiswas001/"
                 className="text-xl text-muted-foreground hover:text-primary border-none outline-none cursor-pointer transition-transform hover:scale-110"
               >
                 <FaFacebook />
@@ -79,7 +79,7 @@ const Footer = () => {
          
               <a
                 className="text-xl text-muted-foreground hover:text-primary border-none outline-none cursor-pointer transition-transform hover:scale-110"
-                href="https://github.com/sujonbiswaseng"
+                href="https://github.com/sujonbiswas01"
               >
                 <FaGithub />
               </a>
