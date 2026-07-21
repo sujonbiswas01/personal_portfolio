@@ -106,45 +106,55 @@ html {
 }
 
 :root {
+  /* Base */
+  --background: oklch(0.99 0.003 260);
+  --foreground: oklch(0.21 0.02 260);
 
-  --background: oklch(0.985 0.003 260);
-
-  --foreground: oklch(0.22 0.02 260);
-
-  --primary: oklch(0.58 0.18 265);
-
-  --card: var(--background);
-  --card-foreground: var(--foreground);
-
-  --popover: var(--background);
-  --popover-foreground: var(--foreground);
-
+  /* Brand */
+  --primary: oklch(0.47 0.31 278);
   --primary-foreground: oklch(0.99 0 0);
 
-  --secondary: oklch(0.95 0.01 260);
-  --secondary-foreground: var(--foreground);
+  --secondary: oklch(0.94 0.02 245);
+  --secondary-foreground: oklch(0.35 0.04 245);
 
-  --muted: oklch(0.96 0.006 260);
-  --muted-foreground: oklch(0.48 0.02 260);
+  --accent: oklch(0.95 0.02 300);
+  --accent-foreground: oklch(0.28 0.06 300);
 
-  --accent: oklch(0.94 0.02 260);
-  --accent-foreground: var(--foreground);
+  /* Surface */
+  --card: oklch(1 0 0);
+  --card-foreground: var(--foreground);
 
-  --border: oklch(0.90 0.01 260);
+  --popover: var(--card);
+  --popover-foreground: var(--foreground);
+
+  /* UI */
+  --muted: oklch(0.97 0.004 260);
+  --muted-foreground: oklch(0.55 0.02 260);
+
+  --border: oklch(0.91 0.01 260);
   --input: var(--border);
 
   --ring: var(--primary);
 
-  --radius: 0.75rem;
+  --destructive: oklch(0.62 0.23 25);
+  --destructive-foreground: white;
+
+  --radius: 1rem;
 }
 
 .dark {
 
-  --background: oklch(0.16 0.015 260);
+  --background: oklch(0.17 0.015 260);
+  --foreground: oklch(0.97 0.003 260);
 
-  --foreground: oklch(0.96 0.003 260);
+  --primary: oklch(0.60 0.28 278);
+  --primary-foreground: white;
 
-  --primary: oklch(0.72 0.14 265);
+  --secondary: oklch(0.28 0.03 245);
+  --secondary-foreground: white;
+
+  --accent: oklch(0.30 0.05 300);
+  --accent-foreground: white;
 
   --card: oklch(0.20 0.015 260);
   --card-foreground: var(--foreground);
@@ -152,23 +162,17 @@ html {
   --popover: var(--card);
   --popover-foreground: var(--foreground);
 
-  --primary-foreground: oklch(0.16 0.015 260);
-
-  --secondary: oklch(0.24 0.01 260);
-  --secondary-foreground: var(--foreground);
-
   --muted: oklch(0.24 0.01 260);
-  --muted-foreground: oklch(0.72 0.01 260);
+  --muted-foreground: oklch(0.74 0.015 260);
 
-  --accent: oklch(0.28 0.02 260);
-  --accent-foreground: var(--foreground);
-
-  --border: oklch(1 0 0 / 10%);
+  --border: oklch(0.28 0.01 260);
   --input: var(--border);
 
   --ring: var(--primary);
-}
 
+  --destructive: oklch(0.67 0.21 25);
+  --destructive-foreground: white;
+}
 @layer base {
   * {
     @apply border-border outline-ring/50;

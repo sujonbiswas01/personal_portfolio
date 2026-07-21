@@ -1,11 +1,10 @@
 "use client";
-import axios from "axios";
-import React, { useEffect, useState, useRef } from "react";
-import { GlareCard } from "./glareCard";
+
+import { useState } from "react";
 import { motion } from "framer-motion";
-import gsap from "gsap";
 import { Button } from "./ui/button";
-import Marquee from "react-fast-marquee";
+import { SkillsData } from "@/assets/skills";
+import Image from "next/image";
 
 type SkillItem = {
   name: string;
@@ -30,61 +29,15 @@ const arr = [
 ];
 
 const Skills = () => {
-  const [skilldata, setSkilldata] = useState<SkillCategory[]>([]);
-  const [loading, setLoading] = useState(true);
-  const container = useRef<HTMLDivElement>(null);
-  const [activeSkill, setActiveSkill] = useState(arr[0]);
 
-  useEffect(() => {
-    axios
-      .get("/api/skills.json")
-      .then((response) => {
-        setSkilldata(response.data);
-      })
-      .catch(() => {
-        setSkilldata([]);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  }, []);
-
-  useEffect(() => {
-    if (container.current) {
-      gsap.fromTo(
-        container.current,
-        { opacity: 0, y: 60 },
-        { opacity: 1, y: 0, duration: 0.6, ease: "linear" }
-      );
-    }
-  }, []);
-
-  const getCategoryColor = (category: string) => {
-    const cat = skilldata.find((item) => item.title === category);
-    return cat?.color || "var(--primary)";
-  };
-
-  const activeSkillCategory = skilldata.find(
-    (item) => item.title === activeSkill
-  );
-
-  // Marquee animation keyframes (CSS)
-  const marqueeAnimation = `
-    @keyframes marquee-slide {
-      0% { transform: translateX(100%); }
-      100% { transform: translateX(-100%);}
-    }
-  `;
-
+  const [activeSkills,setActiveSkills]=useState("Frontend")
+  const data=SkillsData.filter((cur)=>cur.title===activeSkills)
   return (
     <section
       id="skills"
-      ref={container}
-      className="w-full section-space"
+  
+      className="w-full section-space bg-background"
     >
-      <style>
-        {marqueeAnimation}
-      </style>
       <div className="app-shell">
         {/* Title */}
 
@@ -101,299 +54,115 @@ const Skills = () => {
         </motion.div>
 
         {/* Professional Button Bar */}
-        <div className="flex flex-wrap justify-center gap-2 sm:gap-4 ">
-          {arr.map((item, idx) => {
-            const isActive = activeSkill === item;
-            const activeColor = getCategoryColor(item);
 
-            const randomDelay = `${Math.random() * 2}s`;
-            return (
-              <motion.button
-                key={idx}
-                type="button"
-                onClick={() => setActiveSkill(item)}
-                className={`
-                relative px-5 py-2 rounded-full font-semibold
-                shadow-sm border transition-all
-                ${isActive ? "text-white scale-105" : "text-muted-foreground hover:text-primary"}
-                ${isActive ? "" : "bg-muted hover:bg-accent border-transparent"}
-                animate-bounce
-              `}
-                style={{
-                  animationDelay: randomDelay,
-                  animationDuration: "2.5s",
-                  background: isActive
-                    ? `linear-gradient(90deg, ${activeColor}, #8b5cf6 130%)`
-                    : undefined,
-                  borderColor: isActive ? activeColor : undefined,
-                }}
-                whileTap={{ scale: 0.97 }}
-                whileHover={{ scale: isActive ? 1.1 : 1.04 }}
-              >
-                <span className="relative z-10">{item}</span>
-              </motion.button>
-            );
-          })}
-        </div>
+    
+<div className="flex flex-wrap items-center justify-center gap-3">
+  {arr.map((item) => {
+    const isActive = activeSkills === item;
 
-        {/* Grid */}
+    return (
+      <Button
+        key={item}
+        onClick={() => setActiveSkills(item)}
+        className={`
+          rounded-full
+          px-5
+          py-2
+          text-sm
+          font-medium
+          transition-all
+          duration-300
+          ${
+            isActive
+              ? "bg-cyan-500 text-white shadow-lg shadow-cyan-500/30"
+              : "border border-white/10 bg-white/5 text-secondary-foreground border-accent hover:border-cyan-400 hover:bg-cyan-500/10 hover:text-cyan-400"
+          }
+        `}
+      >
+        {item}
+      </Button>
+    );
+  })}
+</div>
+       
+
+        <div className="w-full mt-4 lg:mt-6">
+  {data.map((item, index) => (
+    <div key={index} className="">
+      {/* Category Title */}
+      <div className="mb-6 flex items-center gap-3">
         <div
-          className="w-full"
-        >
-          {loading || !activeSkillCategory ? (
+          className="h-4 w-4 rounded-full"
+          style={{ backgroundColor: item.color }}
+        />
 
-            <GlareCard>
-              <motion.div
-                className="flex flex-col items-center justify-center h-full min-h-[180px]"
-                animate={{
-                  y: [0, -15, 0],
+        <h2 className="text-2xl font-bold text-foreground">
+          {item.title}
+        </h2>
+      </div>
+
+      {/* Skills */}
+      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
+        {item.skill.map((item1, idx) => (
+          <article
+            key={idx}
+            className="
+              group
+              relative
+              overflow-hidden
+              rounded-2xl
+              border
+              border-border
+              bg-card
+              p-6
+              transition-all
+              duration-300
+              hover:-translate-y-2
+              hover:border-primary/40
+              hover:shadow-xl
+            "
+          >
+            {/* Gradient */}
+            <div className="absolute inset-0 opacity-0 transition duration-500 group-hover:opacity-100">
+              <div
+                className="absolute -left-20 -top-20 h-48 w-48 rounded-full blur-3xl"
+                style={{
+                  background: `${item.color}25`,
                 }}
-                transition={{
-                  duration: 1,
-                  repeat: Infinity,
-                  repeatType: "loop",
-                  ease: "easeInOut",
+              />
+
+              <div
+                className="absolute -right-20 -bottom-20 h-48 w-48 rounded-full blur-3xl"
+                style={{
+                  background: `${item.color}15`,
                 }}
-              >
-                <div className="w-14 h-14 rounded-full bg-muted flex items-center justify-center mb-3 shadow-inner ring-2 ring-primary/20">
-                  <svg className="w-8 h-8 text-primary animate-spin" fill="none" viewBox="0 0 24 24">
-                    <circle
-                      className="opacity-30"
-                      cx="12"
-                      cy="12"
-                      r="10"
-                      stroke="currentColor"
-                      strokeWidth="4"
-                    ></circle>
-                    <path
-                      className="opacity-70"
-                      fill="currentColor"
-                      d="M4 12a8 8 0 018-8v4l3.5-3.5L12 0v4A8.001 8.001 0 004 12z"
-                    ></path>
-                  </svg>
-                </div>
-                <h1 className="text-lg font-extrabold text-foreground mb-1 animate-bounce tracking-tight">
-                  Skills Pending...
-                </h1>
-                <p className="text-sm text-muted-foreground">Fetching latest skills data</p>
-              </motion.div>
-            </GlareCard>
-          ) : (
-            <div className="w-full flex items-center justify-center">
-              <div className="w-full mx-auto max-w-[1440px] flex items-center justify-center">
-                <div className="relative flex items-center justify-center w-full min-h-[340px] sm:min-h-[340px] md:min-h-[390px] lg:min-h-[450px] xl:min-h-[520px] py-3">
-                  {/* Circular Skill Track with Glow */}
-                  <div
-                    className="absolute inset-0 md:mt-6 md:left-6 flex items-center justify-center pointer-events-none"
-                  >
-                    <svg
-                      viewBox="0 0 350 350"
-                      className="block"
-                      width="100%"
-                      height="100%"
-                      style={{
-                        maxWidth: 'min(90vw, 350px)',
-                        maxHeight: 'min(90vw, 350px)',
-                        filter: `drop-shadow(0 0 34px ${activeSkillCategory?.color || "#8b5cf6"}33)`,
-                        zIndex: 0,
-                        position: 'absolute',
-                        left: "50%",
-                        top: "50%",
-                        transform: "translate(-50%, -50%)"
-                      }}
-                    >
-                      <circle
-                        cx="175"
-                        cy="175"
-                        r="156"
-                        stroke={activeSkillCategory?.color || "#8b5cf6"}
-                        strokeWidth="13"
-                        fill="none"
-                        opacity="0.23"
-                        style={{ transition: "stroke 0.4s" }}
-                      />
-                      {/* Animated over-border */}
-                      <circle
-                        cx="175"
-                        cy="175"
-                        r="156"
-                        stroke={activeSkillCategory?.color || "#8b5cf6"}
-                        strokeWidth="13"
-                        fill="none"
-                        strokeDasharray="978"
-                        strokeDashoffset="245"
-                        style={{
-                          transition: "stroke 0.4s",
-                          filter: `drop-shadow(0 0 30px ${activeSkillCategory?.color || "#8b5cf6"}90)`,
-                          strokeLinecap: "round",
-                          animation: "circle-spin 12s linear infinite"
-                        }}
-                      />
-                    </svg>
-                    {/* Add some animation style */}
-                    <style>{`
-                      @keyframes circle-spin {
-                        0% { stroke-dashoffset: 245;}
-                        100% { stroke-dashoffset: 978;}
-                      }
-                    `}</style>
-                  </div>
+              />
+            </div>
 
-                  {/* Center category title - bubble effect */}
-                  <div className="absolute  left-1/2 top-1/2 z-10 flex flex-col items-center -translate-x-1/2 -translate-y-1/2">
-                    <div
-                      className="bg-white/90  md:mt-4 md:ml-6 dark:bg-neutral-900/90 rounded-full shadow-xl flex flex-col items-center justify-center border-4"
-                      style={{
-                        borderColor: activeSkillCategory?.color,
-                        minWidth: '92px',
-                        minHeight: '92px',
-                        padding: "10px 20px"
-                      }}
-                    >
-                      <span
-                        className="text-center font-extrabold text-foreground text-base xs:text-lg md:text-xl lg:text-2xl tracking-tight"
-                        style={{
-                          color: activeSkillCategory?.color
-                        }}
-                      >
-                        {activeSkillCategory?.title}
-                      </span>
-                    </div>
-                  </div>
-
-                  <div
-                    className="absolute left-1/2 top-1/2 z-10"
-                    style={{
-                      width: "90vw",
-                      height: "90vw",
-                      maxWidth: "350px",
-                      maxHeight: "350px",
-                      minWidth: "200px",
-                      minHeight: "200px",
-                      pointerEvents: "none",
-                      transform: "translate(-50%, -50%)",
-                    }}
-                  >
-                    <div
-                      className="relative w-full h-full"
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                      }}
-                    >
-                      {activeSkillCategory?.skill.map((sk, idx, arrAll) => {
-                        const iconCount = arrAll.length;
-                        const angle = (2 * Math.PI / iconCount) * idx - Math.PI / 2;
-                        const radiusPercent = 43;
-                        const leftPercent = 50 + radiusPercent * Math.cos(angle);
-                        const topPercent = 50 + radiusPercent * Math.sin(angle);
-
-                        return (
-                          <div
-                            key={sk.name}
-                            className="skill-bubble group"
-                            style={{
-                              position: "absolute",
-                              left: `calc(${leftPercent}% - 0.8rem)`,
-                              top: `calc(${topPercent}% - 0.8rem)`,
-                              width: "3.4rem",
-                              height: "3.4rem",
-                              display: "flex",
-                              alignItems: "center",
-                              justifyContent: "center",
-                              borderRadius: "100rem",
-                              background: "#fff",
-                              boxShadow: `0 3px 16px 0 ${activeSkillCategory?.color}14, 0 0 0 3px ${activeSkillCategory?.color}1a`,
-                              border: `3px solid ${activeSkillCategory?.color}`,
-                              transition: "transform 0.22s, box-shadow 0.22s",
-                              zIndex: 6,
-                              pointerEvents: "auto",
-                              cursor: "pointer",
-                              minWidth: "1.6rem",
-                              minHeight: "1.6rem",
-                            }}
-                            tabIndex={0}
-                            title={sk.name}
-                          >
-                            {sk.icon ? (
-                              <img
-                                src={sk.icon}
-                                alt={sk.name}
-                                className="object-contain animate-[spin_2s_linear_infinite]"
-                                style={{
-                                  width: "2.2rem",
-                                  height: "2.2rem",
-                                  minWidth: "1.1rem",
-                                  minHeight: "1.1rem",
-                                  borderRadius: "99rem",
-                                  boxShadow: `0 1px 6px 0 ${activeSkillCategory?.color}10`
-                                }}
-                              />
-                            ) : (
-                              <span
-                                className="block w-full text-center text-[.85rem] font-bold"
-                                style={{
-                                  color: activeSkillCategory?.color
-                                }}
-                              >
-                                {sk.name.slice(0, 2)}
-                              </span>
-                            )}
-                            {/* Bubble label on hover/focus */}
-                            <span
-                              className="absolute left-1/2 top-[calc(100%+8px)] -translate-x-1/2 opacity-0 group-hover:opacity-100 group-focus:opacity-100 bg-black bg-opacity-70 text-white rounded px-2 py-1 text-xs font-semibold pointer-events-none shadow-lg whitespace-nowrap transition-opacity duration-200"
-                            >
-                              {sk.name}
-                            </span>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </div>
-                  <style>
-                    {`
-                      .skill-bubble {
-                        aspect-ratio: 1/1;
-                      }
-                      @media (max-width: 1024px) {
-                        .skill-bubble {
-                          width: 2.8rem !important;
-                          height: 2.8rem !important;
-                        }
-                        .skill-bubble img {
-                          width: 1.6rem !important;
-                          height: 1.6rem !important;
-                        }
-                      }
-                      @media (max-width: 640px) {
-                        .skill-bubble {
-                          width: 2.1rem !important;
-                          height: 2.1rem !important;
-                        }
-                        .skill-bubble img {
-                          width: 1.2rem !important;
-                          height: 1.2rem !important;
-                        }
-                      }
-                      @media (max-width: 480px) {
-                        .skill-bubble {
-                          width: 1.4rem !important;
-                          height: 1.4rem !important;
-                        }
-                        .skill-bubble img {
-                          width: 0.7rem !important;
-                          height: 0.7rem !important;
-                        }
-                      }
-                    `}
-                  </style>
-
-                </div>
+            {/* Icon */}
+            <div className="relative z-10 flex justify-center">
+              <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-muted transition duration-300 group-hover:scale-110">
+                <Image
+                  src={item1.icon}
+                  alt={item1.name}
+                  width={44}
+                  height={44}
+                  loading="lazy"
+                  className="object-contain"
+                />
               </div>
             </div>
 
-          )}
-        </div>
+            {/* Name */}
+            <h3 className="relative z-10 mt-5 text-center text-base font-semibold text-foreground">
+              {item1.name}
+            </h3>
+          </article>
+        ))}
+      </div>
+    </div>
+  ))}
+</div>
       </div>
     </section>
   );

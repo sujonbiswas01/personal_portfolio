@@ -40,7 +40,7 @@ export default function ContactForm() {
   };
 
   return (
-    <section id="contact" className="section-space">
+    <section id="contact" className="section-space bg-background">
       <div className="app-shell">
         <form
           ref={formRef}
@@ -70,20 +70,6 @@ export default function ContactForm() {
               type="email"
               name="email"
               id="email"
-              required
-              className="w-full px-3 py-2 border rounded-md"
-            />
-          </div>
-
-          {/* Phone (required) */}
-          <div>
-            <label htmlFor="phone" className="block text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-              Phone number <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="tel"
-              name="phone"
-              id="phone"
               required
               className="w-full px-3 py-2 border rounded-md"
             />

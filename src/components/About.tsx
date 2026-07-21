@@ -43,7 +43,7 @@ const Abouts = () => {
               About <span className="text-primary">Me</span>
             </h2>
           </motion.div>
-          <div className="w-full bg-card  flex flex-col-reverse lg:flex-row items-center gap-8 lg:gap-14 backdrop-blur pb-10 md:pb-14 transition-all duration-200 ease-out">
+          <div className="w-full flex flex-col-reverse lg:flex-row items-center gap-8 lg:gap-14 backdrop-blur pb-10 md:pb-14 transition-all duration-200 ease-out">
             {/* Left: Textual Content */}
             <motion.div
               className="w-full lg:w-[58%] flex flex-col justify-center "

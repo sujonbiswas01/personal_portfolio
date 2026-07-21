@@ -6,7 +6,6 @@ import {
   FaInstagramSquare,
   FaYoutube,
 } from "react-icons/fa";
-import { ImagesSlider } from "./images-slider";
 import { ContainerTextFlip } from "./container-textFlip";
 
 const SOCIAL_LINKS = [
@@ -110,12 +109,12 @@ const codingLogoSvg = (
 
 function SocialIcons() {
   return (
-    <div className="flex gap-4 sm:gap-5 mt-4">
+    <div className="flex gap-4 sm:gap-5 mt-4 bg-background">
       {SOCIAL_LINKS.map(({ label, href, icon }) => (
         <a
           key={label}
           href={href}
-          className="text-2xl sm:text-3xl text-white border-none outline-none cursor-pointer"
+          className="text-2xl sm:text-3xl text-accent-foreground border-none outline-none cursor-pointer"
           aria-label={label}
           target="_blank"
           rel="noopener noreferrer"
@@ -144,17 +143,9 @@ function DeveloperProfileImage() {
 }
 
 export function ImagesSliderDemo() {
-  const sliderImages = [
-    "https://cdn.pixabay.com/photo/2016/11/23/14/45/coding-1853305_960_720.jpg",
-    "https://cdn.pixabay.com/photo/2015/09/09/21/12/monitor-933392_960_720.jpg",
-    "https://cdn.pixabay.com/photo/2016/11/19/15/32/code-1839877_1280.jpg",
-  ];
-
   return (
-    <ImagesSlider
-      className="min-h-[calc(100vh-4rem)] md:min-h-[40rem]"
-      images={sliderImages}
-      overlayClassName="bg-gradient-to-r from-black/80 via-black/65 to-black/80"
+    <div
+      className="min-h-[calc(100vh-4rem)] md:min-h-[40rem] bg-background pt-10"
     >
       <motion.div
         initial={{ opacity: 0, y: -80 }}
@@ -163,10 +154,10 @@ export function ImagesSliderDemo() {
         className="z-50 app-shell w-full"
       >
         <motion.div className="relative px-2 md:px-4">
-          <div className="flex flex-col gap-10 md:gap-6 md:flex-row justify-between items-center">
+          <div className="flex flex-col gap-6 md:gap-6 md:flex-row justify-between items-center">
             <div className="text-left  w-full relative z-20 space-y-3">
               <h1 className="font-primary font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight text-white drop-shadow-[0_4px_18px_rgba(0,0,0,0.65)]">
-                <span className="text-base sm:text-lg md:text-2xl text-slate-100">
+                <span className="text-base sm:text-lg md:text-2xl text-secondary-foreground">
                   Hello,
                 </span>
                 <br />
@@ -182,7 +173,7 @@ export function ImagesSliderDemo() {
                 </span>
               </h1>
               <SocialIcons />
-              <div className="mt-4 text-base md:text-lg lg:text-xl text-slate-100 font-medium leading-relaxed max-w-xl drop-shadow-[0_3px_12px_rgba(0,0,0,0.45)]">
+              <div className="text-base md:text-lg lg:text-xl font-medium leading-relaxed max-w-xl drop-shadow-[0_3px_12px_rgba(0,0,0,0.45)] text-secondary-foreground">
                 Crafting <span className="text-primary font-semibold">professional</span>, innovative, and <span className="text-primary font-semibold">responsive</span> web experiences - blending clean code, performance, and user-centered design for businesses that want to make an impact.
               </div>
               <div className="pt-3 pb-4 flex sm:flex-row flex-col items-stretch sm:items-center gap-3 sm:gap-4">
@@ -199,7 +190,7 @@ export function ImagesSliderDemo() {
                     type: "spring",
                     stiffness: 300,
                   }}
-                  className="border border-primary text-white text-center font-semibold font-primary text-base lg:text-lg py-2 px-6 rounded-xl"
+                  className="border border-primary text-accent-foreground text-center font-semibold font-primary text-base lg:text-lg py-2 px-6 rounded-xl"
                   download
                   href={CV_LINK}
                   target="_blank"
@@ -216,6 +207,6 @@ export function ImagesSliderDemo() {
           </div>
         </motion.div>
       </motion.div>
-    </ImagesSlider>
+    </div>
   );
 }

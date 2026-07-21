@@ -1,5 +1,4 @@
 import Abouts from "@/components/About";
-import Bumble from "@/components/Bumble";
 import ContactForm from "@/components/ContactForm";
 // import ContactForm from "@/components/ContactForm";
 import EducationPage from "@/components/Education";
@@ -8,16 +7,16 @@ import { ProjectCard } from "@/components/ProjectCard";
 import Skills from "@/components/Skill";
 import { projects } from "@/data/project";
 
-const HomePage = () => {
+const HomePage = async () => {
+
   return (
     <div className="">
-       <Bumble/>
       <ImagesSliderDemo />
       <Abouts />
       <Skills />
-      <EducationPage />
+     
 
-      <section id="projects" className="section-space">
+      <section id="projects" className="section-space bg-background">
         <div className="app-shell">
           {/* HEADER */}
           <div className="text-center mb-10 md:mb-12">
@@ -37,6 +36,7 @@ const HomePage = () => {
           </div>
         </div>
       </section>
+       <EducationPage />
       <ContactForm />
     </div>
   );

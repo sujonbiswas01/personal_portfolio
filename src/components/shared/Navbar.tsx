@@ -3,8 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import LoadingContent from "../LoadingContent";
-
-// Use hash-based navigation, hydrated on client only to avoid hydration mismatch
+import Image from "next/image";
 const navItems = [
   { name: "Home", href: "/" },
   { name: "About", href: "#about" },
@@ -42,11 +41,14 @@ export default function Navbar() {
     return (
       <header className="sticky top-0 z-50 w-full bg-background/95 border-b border-border/80 backdrop-blur-md shadow-sm">
         <div className="px-4 sm:px-6 lg:px-8 h-16 md:h-[4.25rem] flex items-center justify-between">
-          <div className="flex items-center">
-            <img
+          <div className="flex items-center rounded-full">
+            <Image
               src="/images/sujon_logo.png"
               alt="Logo"
-              className="w-12 h-12 md:w-14 md:h-14 object-contain"
+              width={48}
+              height={48}
+              priority
+              className="w-12 h-12 md:w-14 md:h-14 object-contain rounded-full"
             />
           </div>
           <nav className="hidden md:flex items-center gap-8 lg:gap-10 text-base font-medium">
@@ -103,7 +105,7 @@ export default function Navbar() {
             <img
               src="/images/sujon_logo.png"
               alt="Logo"
-              className="w-12 h-12 md:w-14 md:h-14 object-contain"
+              className="w-12 h-12 md:w-14 md:h-14 object-contain rounded-full"
             />
           </Link>
 

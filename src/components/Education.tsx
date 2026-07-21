@@ -38,7 +38,7 @@ const timelineItem: Variants = {
 
 export default function EducationPage() {
   return (
-    <section id="education" className="w-full section-space bg-gradient-to-br from-background via-accent/20 to-background transition-colors px-4 md:px-6 lg:px-8">
+    <section id="education" className="w-full section-space bg-background px-4 md:px-6 lg:px-8">
       <div className="">
         {/* HEADER */}
         <motion.div

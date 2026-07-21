@@ -1,4 +1,4 @@
-[
+export const SkillsData = [
   {
     "title": "Frontend",
     "color": "#581c87",
