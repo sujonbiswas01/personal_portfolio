@@ -15,7 +15,7 @@ export type Project = {
     {
       slug: "Bitebase",
       name: "Bitebase Advanced Full-Stack Multi-Vendor Food Ordering Platform",
-      image: "/images/foodhub.png",
+      image: "https://res.cloudinary.com/dokqgr8fs/image/upload/v1784896774/bitebase_jc56qd.png",
       description:
         "BiteBase is an AI-powered full-stack multi-vendor food ordering platform that allows customers to discover meals, place orders, and track deliveries, while vendors manage menus and orders through a secure and responsive dashboard. The platform includes smart AI features, secure authentication, payment integration, and scalable admin management for a seamless food delivery experience.",
       stack: [
