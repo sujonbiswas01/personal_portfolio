@@ -46,7 +46,7 @@ export type Project = {
     {
       slug: "lumen",
       name: "lumen – Event Management Platform",
-      image: "/images/planora.png",
+      image: "https://res.cloudinary.com/dcbgdaiod/image/upload/v1784892506/Lumen-Project-Cover_c5aqev.png",
       description:`Lumen is a high-performance, full-stack event management ecosystem engineered for the modern era. It serves as a comprehensive bridge between ambitious event organizers and global audiences. From high-capacity music festivals to intimate corporate seminars, Lumen provides a professional-grade suite of tools for event discovery, secure ticketing, and real-time participant management.
 Built with a focus on scalability, security, and intelligence, Lumen eliminates the friction of traditional planning by integrating AI-driven insights and a flawless, role-based user experience.`,
       stack: [
