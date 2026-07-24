@@ -103,7 +103,7 @@ export const SkillsData = [
       },
       {
         "id": 14,
-        "icon": "/images/sslcommerz.webp",
+        "icon": "/images/sslcommerce.webp",
         "percentage": "85",
         "name": "SSLCommerz"
       }
@@ -247,9 +247,9 @@ export const SkillsData = [
       },
       {
         "id": 8,
-        "icon": "/images/rabbitmq.webp",
+        "icon": "/images/BullMq.webp",
         "percentage": "85",
-        "name": "Queue System"
+        "name": "BullMq"
       },
       {
         "id": 9,
