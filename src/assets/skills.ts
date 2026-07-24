@@ -54,8 +54,7 @@ export const SkillsData = [
     "skill": [
       {
         "id": 8,
-        "icon": "https://cdn.simpleicons.org/tailwindcss",
-  
+        "icon": "/images/tailwindcss.webp",
         "percentage": "90",
         "name": "Tailwind CSS"
       },
@@ -98,13 +97,13 @@ export const SkillsData = [
     "skill": [
       {
         "id": 13,
-        "icon": "https://cdn.simpleicons.org/stripe",
+        "icon": "/images/stripe.webp",
         "percentage": "90",
         "name": "Stripe"
       },
       {
         "id": 14,
-        "icon": "https://cdn.simpleicons.org/mastercard",
+        "icon": "/images/sslcommerz.webp",
         "percentage": "85",
         "name": "SSLCommerz"
       }
@@ -248,19 +247,13 @@ export const SkillsData = [
       },
       {
         "id": 8,
-        "icon": "https://cdn.simpleicons.org/elasticstack",
-        "percentage": "80",
-        "name": "Logging Systems"
-      },
-      {
-        "id": 9,
-        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rabbitmq/rabbitmq-original.svg",
+        "icon": "/images/rabbitmq.webp",
         "percentage": "85",
         "name": "Queue System"
       },
       {
-        "id": 10,
-        "icon": "https://cdn.simpleicons.org/sentry",
+        "id": 9,
+        "icon": "/images/sentry.webp",
         "percentage": "90",
         "name": "Sentry Monitoring"
       }
